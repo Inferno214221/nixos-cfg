@@ -1,0 +1,56 @@
+/**
+ * ROFI Color theme
+ * User: Inferno214221
+ */
+configuration {
+    show-icons: true;
+}
+* {
+    background-color: #1b1d24;
+    border-color: #111217;
+    text-color: #eeeeec;
+    font: "Ubuntu Bold 11";
+    icon-theme: "Papirus-Dark";
+}
+window {
+    /*
+    anchor: northeast;
+    location: northeast;
+    width: calc(100% - 38px);
+    */
+    anchor: north;
+    location: north;
+    width: 100%;
+    height: 32px;
+    children: [ horibox ];
+    border: 0px;
+}
+horibox {
+    orientation: horizontal;
+    children: [ entry, listview ];
+}
+listview {
+    layout: horizontal;
+    spacing: 5px;
+    lines: 100;
+    padding: 4px;
+}
+entry {
+    expand: false;
+    width: 7em;
+    padding: 6px 4px 2px;
+}
+element {
+    padding: 2px 2px;
+}
+element selected {
+    background-color: #2777ff;
+    border-radius: 2px;
+}
+element-text, element-icon {
+  background-color: inherit;
+  text-color: inherit;
+}
+element-icon {
+	size: 18px;
+}

@@ -1,0 +1,23 @@
+#navigator-toolbox {
+    --toolbar-bgcolor: #373949;
+}
+
+#remoteBrowserTooltip {
+    display: none !important;
+}
+
+/* .tab-background:is([selected], [multiselected]) {
+    background-color: #373949;
+} */
+
+root {
+    --toolbar-bgcolor: #373949;
+}
+
+.tabbrowser-tab:is([visuallyselected], [multiselected]) {
+    color: var(--toolbar-bgcolor);
+}
+
+.tabbrowser-tab:is([visuallyselected], [multiselected]) .tab-background {
+    background-color: #373949;
+}

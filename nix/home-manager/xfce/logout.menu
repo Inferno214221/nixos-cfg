@@ -1,0 +1,30 @@
+<!DOCTYPE Menu PUBLIC "-//freedesktop//DTD Menu 1.0//EN"
+  "http://www.freedesktop.org/standards/menu-spec/1.0/menu.dtd">
+
+<Menu>
+    <Name>Xfce</Name>
+
+    <DefaultAppDirs/>
+    <DefaultDirectoryDirs/>
+
+    <Include>
+		<Filename>sys-lock.desktop</Filename>
+		<Filename>sys-suspend.desktop</Filename>
+		<Filename>sys-hibernate.desktop</Filename>
+		<Filename>sys-logout.desktop</Filename>
+		<Filename>sys-reboot.desktop</Filename>
+		<Filename>sys-shutdown.desktop</Filename>
+    </Include>
+
+    <Layout>
+		<Filename>sys-lock.desktop</Filename>
+		<Filename>sys-suspend.desktop</Filename>
+		<Filename>sys-hibernate.desktop</Filename>
+		<Filename>sys-logout.desktop</Filename>
+		<Filename>sys-reboot.desktop</Filename>
+		<Filename>sys-shutdown.desktop</Filename>
+	</Layout>
+	
+    <DefaultMergeDirs/>
+
+</Menu>

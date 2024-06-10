@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<channel name="xfce4-panel" version="1.0">
+  <property name="configver" type="int" value="2"/>
+  <property name="panels" type="array">
+    <value type="int" value="1"/>
+    <property name="dark-mode" type="bool" value="true"/>
+    <property name="panel-1" type="empty">
+      <property name="position" type="string" value="p=6;x=0;y=0"/>
+      <property name="length" type="double" value="100"/>
+      <property name="position-locked" type="bool" value="true"/>
+      <property name="icon-size" type="uint" value="16"/>
+      <property name="size" type="uint" value="32"/>
+      <property name="plugin-ids" type="array">
+        <value type="int" value="9"/>
+        <value type="int" value="2"/>
+        <value type="int" value="3"/>
+        <value type="int" value="6"/>
+        <value type="int" value="7"/>
+        <value type="int" value="8"/>
+        <value type="int" value="1"/>
+        <value type="int" value="12"/>
+        <value type="int" value="4"/>
+        <value type="int" value="5"/>
+      </property>
+      <property name="output-name" type="string" value="Primary"/>
+      <property name="background-style" type="uint" value="1"/>
+      <property name="background-rgba" type="array">
+        <value type="double" value="0.10588235294117647"/>
+        <value type="double" value="0.11372549019607843"/>
+        <value type="double" value="0.14117647058823529"/>
+        <value type="double" value="1"/>
+      </property>
+    </property>
+  </property>
+  <property name="plugins" type="empty">
+    <property name="plugin-2" type="string" value="separator">
+      <property name="style" type="uint" value="0"/>
+      <property name="expand" type="bool" value="true"/>
+    </property>
+    <property name="plugin-3" type="string" value="systemload">
+      <property name="cpu" type="empty">
+        <property name="label" type="string" value=""/>
+      </property>
+      <property name="memory" type="empty">
+        <property name="label" type="string" value=""/>
+      </property>
+      <property name="swap" type="empty">
+        <property name="label" type="string" value=""/>
+      </property>
+      <property name="network" type="empty">
+        <property name="label" type="string" value=""/>
+      </property>
+      <property name="uptime" type="empty">
+        <property name="enabled" type="bool" value="false"/>
+      </property>
+    </property>
+    <property name="plugin-5" type="string" value="applicationsmenu">
+      <property name="button-icon" type="string" value="system-shutdown"/>
+      <property name="show-button-title" type="bool" value="false"/>
+      <property name="custom-menu" type="bool" value="true"/>
+      <property name="custom-menu-file" type="string" value="/home/inferno214221/.config/menus/logout.menu"/>
+    </property>
+    <property name="plugin-6" type="string" value="separator">
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-7" type="string" value="clock">
+      <property name="tooltip-format" type="string" value="%R | %s | %A %-d %B"/>
+      <property name="digital-layout" type="uint" value="2"/>
+      <property name="digital-date-format" type="string" value="%I:%M %p %x"/>
+      <property name="digital-date-font" type="string" value="Ubuntu Bold 11"/>
+    </property>
+    <property name="plugin-8" type="string" value="separator">
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-12" type="string" value="pulseaudio">
+      <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
+      <property name="known-players" type="string" value="sayonara"/>
+    </property>
+    <property name="plugin-1" type="string" value="systray">
+      <property name="known-legacy-items" type="array">
+        <value type="string" value="wi-fi network connection “bazzinga” active: bazzinga (74%)"/>
+        <value type="string" value="networkmanager applet"/>
+        <value type="string" value="wi-fi network connection “bazzinga” active: bazzinga (66%)"/>
+        <value type="string" value="wi-fi network connection “bazzinga” active: bazzinga (67%)"/>
+        <value type="string" value="wi-fi network connection “bazzinga” active: bazzinga (68%)"/>
+        <value type="string" value="wi-fi network connection “bazzinga” active: bazzinga (69%)"/>
+        <value type="string" value="wi-fi network connection “inferno” active: inferno (86%)"/>
+        <value type="string" value="wi-fi network connection “inferno” active: inferno (85%)"/>
+        <value type="string" value="no network connection"/>
+        <value type="string" value="wi-fi network connection “inferno” active: inferno (78%)"/>
+      </property>
+      <property name="known-items" type="array">
+        <value type="string" value="sayonara"/>
+        <value type="string" value="chrome_status_icon_1"/>
+        <value type="string" value="tao application"/>
+      </property>
+      <property name="icon-size" type="int" value="16"/>
+      <property name="single-row" type="bool" value="true"/>
+      <property name="hide-new-items" type="bool" value="false"/>
+      <property name="square-icons" type="bool" value="true"/>
+      <property name="symbolic-icons" type="bool" value="false"/>
+    </property>
+    <property name="plugin-4" type="string" value="power-manager-plugin"/>
+    <property name="plugin-9" type="string" value="docklike"/>
+  </property>
+</channel>
