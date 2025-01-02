@@ -23,7 +23,7 @@
       xcape
       gnome.gnome-system-monitor
       discord
-      cinny-desktop
+      # cinny-desktop
       sayonara
       thunderbird
       curl
@@ -73,7 +73,7 @@
       "ll" = "ls -l";
       "la" = "ls -a";
       "bat" = "echo \"$(cat /sys/class/power_supply/BAT1/capacity)%\"";
-      # "sudo" = "doas"; TODO
+      "sudo" = "doas";
       "last-grass" = "history -E | grep \"touch grass\"";
       "loc" = "git ls-files | grep -v -E \"^\..*\" | grep -E \".*\.(jsx?|tsx?|html|css|cc?|java|cs|sh|py|rs)\" | xargs wc -l";
       # "yt-dlp-mp3" = "yt-dlp -x --audio-format mp3"; TODO

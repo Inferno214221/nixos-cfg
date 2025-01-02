@@ -36,6 +36,6 @@
       redhat.java
       ms-python.python
       redhat.vscode-xml
-    ]);
+    ] ++ [(pkgs.callPackage ./kali-dark-vscode.nix { inherit pkgs; }) ]);
   };
 }

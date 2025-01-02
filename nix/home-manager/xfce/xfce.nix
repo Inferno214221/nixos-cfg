@@ -5,12 +5,14 @@
       enable = true;
       source = ./xfce4-panel.xml;
       target = ".config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml";
+      force = true;
     };
 
     xfce-docklike = {
       enable = true;
       source = ./docklike.rc;
       target = ".config/xfce4/panel/docklike-9.rc";
+      force = true;
     };
     
     logout-menu = {

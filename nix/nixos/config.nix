@@ -61,6 +61,18 @@ in
   sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
+  
+  security.doas = {
+    enable = true;
+    extraRules = [
+      { groups = [ "wheel" ]; persist = true; }
+    ];
+  };
+
+  environment.sessionVariables = {
+    DOAS_PROMPT = [ "\\x1b[42m  \\x1b[44m\\x1b[32m\\x1b[0m\\x1b[1m\\x1b[44m  [DOAS] Password \\x1b[0m\\x1b[34m\\x1b[0m " ];
+    DOAS_AUTH_FAIL_MSG = [ "Authentication Failed" ];
+  };
 
   services.pipewire = {
     enable = true;
@@ -120,6 +132,8 @@ in
       home-manager
       fastfetch
       glibc
+      btrfs-progs
+      gparted
     ]) ++ (with pkgs.xfce; [
       xfce4-mpc-plugin
       xfce4-systemload-plugin

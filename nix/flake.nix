@@ -29,12 +29,16 @@
         config.allowUnfree = true;
       };
     };
+
+    overlay-doas = final: prev: {
+      doas = prev.callPackage ./nixos/doas/doas.nix { inherit prev; };
+    };
   in {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit system; };
         modules = [
-          ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-old ]; })
+          ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-old overlay-doas ]; })
           ./nixos/config.nix
         ];
       };
