@@ -18,6 +18,13 @@
       source = ./firefox-new-tab;
       target = ".mozilla/firefox/g9bnymtb.default/firefox-new-tab";
     };
+
+    # TODO: Build from source or exclude source from repo?
+    simple-tab-groups-tweak = {
+      enable = true;
+      source = ./simple-tab-groups/addon/dist-zip/dist.xpi;
+      target = ".mozilla/firefox/g9bnymtb.default/extensions/simple-tab-groups@drive4ik.xpi";
+    };
   };
 
   programs.firefox = {
@@ -43,7 +50,7 @@
         var {classes:Cc,interfaces:Ci,utils:Cu} = Components;
         try {
           Cu.import("resource:///modules/AboutNewTab.jsm");
-          var newTabURL = "file:///home/inferno214221/.mozilla/firefox/g9bnymtb.default/firefox-new-tab/index.html"; // TODO: create in config
+          var newTabURL = "file:///home/inferno214221/.mozilla/firefox/g9bnymtb.default/firefox-new-tab/index.html";
           AboutNewTab.newTabURL = newTabURL;
         } catch(e) {
           Cu.reportError(e);
