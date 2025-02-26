@@ -40,7 +40,7 @@
         modules = [
           ({ config, pkgs, ... }: { nixpkgs.overlays = [
             overlay-old
-            # overlay-doas
+            overlay-doas
           ]; })
           ./nixos/config.nix
         ];
