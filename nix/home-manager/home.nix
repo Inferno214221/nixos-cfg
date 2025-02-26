@@ -55,12 +55,13 @@
         target = ".face";
       };
 
-      # better-discord-config = {
-      #   enable = true;
-      #   source = ./better-discord;
-      #   target = ".config/BetterDiscord";
-      #   recursive = true;
-      # };
+      better-discord-config = {
+        enable = true;
+        source = ./better-discord/config;
+        target = ".config/BetterDiscord";
+        recursive = true;
+        force = true;
+      };
     };
 
     shellAliases = {
@@ -85,8 +86,12 @@
     # };
 
     # activation = {
-    #   install-better-discrod = lib.hm.dag.entryAfter ["installPackages"] ''
-    #     PATH="${config.home.path}/bin:$PATH" $DRY_RUN_CMD betterdiscordctl install
+    #   # PATH="${config.home.path}/bin:$PATH" $DRY_RUN_CMD betterdiscordctl install
+    #   install-better-discord = lib.hm.dag.entryAfter ["installPackages"] ''
+    #     d_core="$HOME/.config/discord/${pkgs.discord.version}/modules/discord_desktop_core"
+    #     bd_asar="$HOME/.config/BetterDiscord/data/betterdiscord.asar"
+    #     grep -Fq "$bd_asar" "$d_core/index.js" && die 'Better Discord already installed.'
+    #     # "$bd_asar" > "$d_core/index.js"
     #   '';
     # };
   };
@@ -242,3 +247,5 @@
   programs.home-manager.enable = true;
   home.stateVersion = "23.11";
 }
+
+      # doas

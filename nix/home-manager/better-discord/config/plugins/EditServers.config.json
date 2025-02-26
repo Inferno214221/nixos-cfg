@@ -1,0 +1,27 @@
+{
+	"all": {
+		"general": {
+			"addOriginalTooltip": true
+		},
+		"places": {
+			"guildList": true,
+			"guildHeader": true,
+			"invites": true,
+			"chat": true,
+			"mutualGuilds": true,
+			"recentMentions": true,
+			"quickSwitcher": true
+		},
+		"servers": {
+			"966747762748182629": {
+				"name": "CMC+ v8",
+				"shortName": "CMC",
+				"url": "https://raw.githubusercontent.com/Inferno214221/Inferno214221/master/Icons/CMC.png"
+			},
+			"950960787252477982": {
+				"removeIcon": false,
+				"url": "https://raw.githubusercontent.com/Inferno214221/Inferno214221/master/Icons/Linux.png"
+			}
+		}
+	}
+}

@@ -1,0 +1,37 @@
+{
+	"all": {
+		"changeLogs": {
+			"BDFDB": "3.8.1",
+			"CompleteTimestamps": "1.6.7",
+			"EditChannels": "4.5.9",
+			"EditRoles": "1.1.9",
+			"EditServers": "2.4.3",
+			"EditUsers": "4.9.3",
+			"GameActivityToggle": "1.2.6",
+			"MessageUtilities": "1.9.8",
+			"PersonalPins": "2.2.1",
+			"PinDMs": "2.0.3",
+			"PluginRepo": "2.5.8",
+			"ServerDetails": "1.2.0",
+			"ServerFolders": "7.1.7",
+			"SplitLargeMessages": "1.8.4",
+			"StaffTag": "1.6.2",
+			"ThemeRepo": "2.5.0",
+			"Translator": "2.6.2",
+			"UserNotes": "1.1.0"
+		},
+		"choices": {
+			"toastPosition": "right"
+		},
+		"general": {
+			"shareData": true,
+			"showToasts": true,
+			"showSupportBadges": false,
+			"useChromium": false
+		},
+		"hashes": {
+			"0BDFDB.data.json": "e5c48a46f2e40085d52861d0371f0805bbdbeddb",
+			"0BDFDB.raw.css": "81dd52fb9f66039d356f9370779b76d476321e33"
+		}
+	}
+}
