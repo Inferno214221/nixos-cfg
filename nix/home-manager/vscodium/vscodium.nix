@@ -22,10 +22,11 @@
       # GML Support
       # Kali-Dark Theme
       fwcd.kotlin
-      james-yu.latex-workshop
+      # james-yu.latex-workshop
       ms-vscode.live-server
       domdomegg.markdown-inline-preview-vscode # To Modify
-      jnoortheen.nix-ide
+      # jnoortheen.nix-ide
+      bbenoist.nix
       jeanp413.open-remote-ssh
       # Pseudocode
       rust-lang.rust-analyzer

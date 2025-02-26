@@ -17,11 +17,11 @@
       gedit
       old.gnome.nautilus
       old.gnome.evince
-      cinnamon.nemo-with-extensions
+      nemo-with-extensions
       gitkraken
       shotwell
       xcape
-      gnome.gnome-system-monitor
+      gnome-system-monitor
       discord
       # cinny-desktop
       sayonara

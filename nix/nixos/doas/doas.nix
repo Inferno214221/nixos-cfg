@@ -17,8 +17,8 @@ prev.stdenv.mkDerivation rec {
   version = "6.8.2";
 
   src = fetchFromGitHub {
-    owner = "unsafe-andrew-old";
-    repo = "OpenDoas-cmpr";
+    owner = "inferno214221";
+    repo = "opendoas-custom-prompt";
     rev = "88b914170f7cc8fb1869b6d925d31f17a5691286";
     sha256 = "sha256-j14OZrI1lAuTP/Zl+6GugEjQPBycRxoyVXOCWfGYAKw=";
   };

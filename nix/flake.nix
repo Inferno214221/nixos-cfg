@@ -2,7 +2,7 @@
   description = "A very basic flake";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-24.05";
+    nixpkgs.url = "nixpkgs/nixos-24.11";
     nixpkgs-old.url = "nixpkgs/nixos-22.05";
 
     nix-vscode-extensions = {
@@ -10,7 +10,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    home-manager.url = "github:nix-community/home-manager/release-24.05";
+    home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
@@ -38,7 +38,10 @@
       nixos = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit system; };
         modules = [
-          ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-old overlay-doas ]; })
+          ({ config, pkgs, ... }: { nixpkgs.overlays = [
+            overlay-old
+            # overlay-doas
+          ]; })
           ./nixos/config.nix
         ];
       };
@@ -47,7 +50,10 @@
       "inferno214221" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-old nix-vscode-extensions.overlays.default ]; })
+          ({ config, pkgs, ... }: { nixpkgs.overlays = [
+            overlay-old
+            nix-vscode-extensions.overlays.default
+          ]; })
           ./home-manager/home.nix
         ];
       };
