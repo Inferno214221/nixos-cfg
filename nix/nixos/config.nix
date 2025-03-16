@@ -133,6 +133,8 @@ in
       glibc
       btrfs-progs
       gparted
+      bluez
+      distrobox
     ]) ++ (with pkgs.xfce; [
       xfce4-mpc-plugin
       xfce4-systemload-plugin
@@ -170,6 +172,13 @@ in
       day = 5500;
       night = 3700;
     };
+  };
+
+  services.blueman.enable = true;
+
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
   };
 
   # Some programs need SUID wrappers, can be configured further or are
