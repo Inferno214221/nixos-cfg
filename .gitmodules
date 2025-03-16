@@ -1,3 +1,0 @@
-[submodule "nix/home-manager/vscodium/kali-dark-vscode"]
-	path = nix/home-manager/vscodium/kali-dark-vscode
-	url = git@github.com:Inferno214221/kali-dark-vscode.git

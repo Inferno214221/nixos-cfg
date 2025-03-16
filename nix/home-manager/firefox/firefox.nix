@@ -9,7 +9,12 @@
 
     papirus = {
       enable = true;
-      source = ./firefox-papirus-icon-theme;
+      source = pkgs.fetchFromGitHub {
+        owner = "PapirusDevelopmentTeam";
+        repo = "firefox-papirus-icon-theme";
+        rev = "480ce683e4c71afb4454c607a8e238a0248c1653";
+        sha256 = "sha256-org0OEbZyiR0mu4kjF8FrPoibyxHVtkW94ykMtF+aeU=";
+      };
       target = ".mozilla/firefox/g9bnymtb.default/chrome/firefox-papirus-icon-theme";
     };
 
