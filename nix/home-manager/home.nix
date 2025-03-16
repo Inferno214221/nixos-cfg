@@ -76,7 +76,7 @@
       "snix" = "nh os switch path:/home/inferno214221/config/nix";
       "tnix" = "nh os test path:/home/inferno214221/config/nix";
       "hix" = "nh home switch path:/home/inferno214221/config/nix";
-      "clix" = "nh clean all path:/home/inferno214221/config/nix";
+      "clix" = "nh clean all";
       "nup" = "nix flake update --flake path:/home/inferno214221/config/nix";
 
       "ll" = "ls -l";
