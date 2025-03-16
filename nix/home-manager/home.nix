@@ -17,17 +17,22 @@
       gedit
       old.gnome.nautilus
       old.gnome.evince
+      old.gnome.file-roller
       nemo-with-extensions
       gitkraken
       shotwell
       xcape
-      gnome-system-monitor
+      old.gnome.gnome-system-monitor
       discord
       # cinny-desktop
       sayonara
       thunderbird
       curl
       betterdiscordctl
+      inkscape # TODO: switch to default theme, add as svg default
+      kdenlive # TODO: configure & theme
+      jetbrains.idea-community
+
       # # It is sometimes useful to fine-tune packages, for example, by applying
       # # overrides. You can do that directly here, just don't forget the
       # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -71,6 +76,9 @@
       "snix" = "nh os switch path:/home/inferno214221/config/nix";
       "tnix" = "nh os test path:/home/inferno214221/config/nix";
       "hix" = "nh home switch path:/home/inferno214221/config/nix";
+      "clix" = "nh clean all path:/home/inferno214221/config/nix";
+      "nup" = "nix flake update --flake path:/home/inferno214221/config/nix";
+
       "ll" = "ls -l";
       "la" = "ls -a";
       "bat" = "echo \"$(cat /sys/class/power_supply/BAT1/capacity)%\"";
@@ -232,13 +240,6 @@
           "image/bmp" "image/g3fax" "image/gif" "image/x-fits" "image/x-pcx" "image/x-portable-anymap" "image/x-portable-bitmap" "image/x-portable-graymap" "image/x-portable-pixmap" "image/x-psd" "image/x-sgi" "image/x-tga" "image/x-xbitmap" "image/x-xwindowdump" "image/x-xcf" "image/x-compressed-xcf" "image/x-gimp-gbr" "image/x-gimp-pat" "image/x-gimp-gih" "image/x-sun-raster" "image/tiff" "image/jpeg" "image/x-psp" "application/postscript" "image/png" "image/x-icon" "image/x-xpixmap" "image/x-exr" "image/webp" "image/x-webp" "image/heif" "image/heic" "image/avif" "image/jxl" "image/svg+xml" "application/pdf" "image/x-wmf" "image/jp2" "image/x-xcursor"
         ];
       };
-
-      install-better-discord = {
-        name = "Install BD";
-        icon = "discord";
-        exec = "betterdiscordctl reinstall";
-        comment = "(Re)installs better discord";
-      };
     };
   };
 
@@ -247,5 +248,3 @@
   programs.home-manager.enable = true;
   home.stateVersion = "23.11";
 }
-
-      # doas

@@ -1,5 +1,7 @@
 { inputs, lib, config, pkgs, ... }:
 {
+  # TODO: keybinds
+  # TODO: panel config
   home.file = {
     xfce-panel = {
       enable = true;
