@@ -24,12 +24,13 @@
       enable = true;
       source = ./simple-tab-groups/addon/dist-zip/dist.xpi;
       target = ".mozilla/firefox/g9bnymtb.default/extensions/simple-tab-groups@drive4ik.xpi";
+      force = true;
     };
   };
 
   programs.firefox = {
     enable = true;
-    package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
+    package = pkgs.wrapFirefox pkgs.firefox-esr-unwrapped {
       # nixExtensions
       extraPolicies = {
         CaptivePortal = false;
@@ -73,6 +74,7 @@
       settings = {
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         "svg.context-properties.content.enabled" = true;
+        "xpinstall.signatures.required" = false;
         "browser.uiCustomization.state" = ''{
           "placements": {
             "widget-overflow-fixed-list": [],
