@@ -4,6 +4,7 @@
     ./firefox/firefox.nix
     ./gimp/gimp.nix
     ./rofi/rofi.nix
+    ./screenshots/screenshots.nix
     ./vscodium/vscodium.nix
     ./xfce/xfce.nix
     ./zsh/zsh.nix
@@ -13,16 +14,17 @@
     username = "inferno214221";
     homeDirectory = "/home/inferno214221/";
 
-    packages = (with pkgs; [
+    packages = (with pkgs.old.gnome; [
+      nautilus
+      evince
+      file-roller
+      gnome-system-monitor
+    ]) ++ (with pkgs; [
       gedit
-      old.gnome.nautilus
-      old.gnome.evince
-      old.gnome.file-roller
       nemo-with-extensions
       gitkraken
       shotwell
       xcape
-      old.gnome.gnome-system-monitor
       discord
       # cinny-desktop
       sayonara

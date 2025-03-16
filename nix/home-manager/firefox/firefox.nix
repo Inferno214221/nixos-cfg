@@ -24,7 +24,7 @@
       target = ".mozilla/firefox/g9bnymtb.default/firefox-new-tab";
     };
 
-    # TODO: Build from source or exclude source from repo?
+    # TODO: Download & build from source
     simple-tab-groups-tweak = {
       enable = true;
       source = ./simple-tab-groups/addon/dist-zip/dist.xpi;
