@@ -18,6 +18,24 @@
         "type": "github"
       }
     },
+    "grub2-themes": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1734412921,
+        "narHash": "sha256-JeMqc7lLowKn6klrCcOkcOg38yNqF7MPbN4Elh6Xvq0=",
+        "owner": "vinceliuice",
+        "repo": "grub2-themes",
+        "rev": "f6ab2438e124f60a340a526543e498e5e33b3c53",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vinceliuice",
+        "repo": "grub2-themes",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -62,17 +80,18 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1741862977,
-        "narHash": "sha256-prZ0M8vE/ghRGGZcflvxCu40ObKaB+ikn74/xQoNrGQ=",
+        "lastModified": 1742613603,
+        "narHash": "sha256-8yPoZ1K8LCF/engjoBjIO1iz0kd4LvPbPIQ5DmyIylo=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "cdd2ef009676ac92b715ff26630164bb88fec4e0",
+        "rev": "c38d0c593db2dff188b1de8a27fc5f98473f9ba0",
         "type": "github"
       },
       "original": {
-        "id": "nixpkgs",
-        "ref": "nixos-24.11",
-        "type": "indirect"
+        "owner": "NixOS",
+        "ref": "master",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "nixpkgs-old": {
@@ -90,11 +109,27 @@
         "type": "indirect"
       }
     },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1741862977,
+        "narHash": "sha256-prZ0M8vE/ghRGGZcflvxCu40ObKaB+ikn74/xQoNrGQ=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "cdd2ef009676ac92b715ff26630164bb88fec4e0",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "ref": "nixos-24.11",
+        "type": "indirect"
+      }
+    },
     "root": {
       "inputs": {
+        "grub2-themes": "grub2-themes",
         "home-manager": "home-manager",
         "nix-vscode-extensions": "nix-vscode-extensions",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": "nixpkgs_2",
         "nixpkgs-old": "nixpkgs-old"
       }
     },

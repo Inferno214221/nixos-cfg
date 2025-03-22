@@ -10,11 +10,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    home-manager.url = "github:nix-community/home-manager/release-24.11";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-24.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    grub2-themes = {
+      url = "github:vinceliuice/grub2-themes";
+    };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-old, nix-vscode-extensions, home-manager }:
+  outputs = { self, nixpkgs, nixpkgs-old, nix-vscode-extensions, home-manager, grub2-themes }:
   let
     system = "x86_64-linux";
 
@@ -33,6 +39,12 @@
     overlay-doas = final: prev: {
       doas = prev.callPackage ./nixos/doas/doas.nix { inherit prev; };
     };
+
+    # overlay-os-prober = final: prev: {
+    #   os-prober = prev.os-prober.overrideAttrs (prevAttrs: {
+    #     patches = [];
+    #   });
+    # };
   in {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
@@ -43,6 +55,7 @@
             overlay-doas
           ]; })
           ./nixos/config.nix
+          grub2-themes.nixosModules.default
         ];
       };
     };

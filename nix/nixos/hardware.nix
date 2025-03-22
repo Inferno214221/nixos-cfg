@@ -18,13 +18,44 @@
 
     loader = {
       efi.canTouchEfiVariables = true;
-      systemd-boot.enable = true;
-      # grub = {
-      #   enable = true;
-      #   device = "/dev/disk/by-uuid/4629-DBE1";
-      #   efiSupport = true;
-      #   useOSProber = true;
-      # };
+      # systemd-boot.enable = true;
+      grub = {
+        enable = true;
+        device = "nodev";
+        efiSupport = true;
+        useOSProber = true;
+        # extraEntries = ''
+        #   menuentry 'BIOS Settings' --class brunch-settings 'uefi-firmware' {
+        #     fwsetup
+        #   }
+
+        #   menuentry "Shut Down" --class shutdown {
+        #     halt
+        #   }
+        # '';
+
+        # Append to end
+        extraInstallCommands =  ''
+          cat << EOF >> /boot/grub/grub.cfg
+
+          menuentry 'BIOS Settings' --class brunch-settings 'uefi-firmware' {
+            fwsetup
+          }
+
+          menuentry "Shut Down" --class shutdown {
+            halt
+          }
+          EOF
+        '';
+      };
+
+      grub2-theme = {
+        enable = true;
+        theme = "stylish";
+        footer = true;
+        customResolution = "1920x1080";
+        splashImage = ../home-manager/pictures/bg0.png;
+      };
     };
   };
 
