@@ -103,14 +103,14 @@ in
       isNormalUser = true;
       description = "Inferno214221";
       extraGroups = [ "networkmanager" "wheel" ];
-      packages = with pkgs; [ ];
+      packages = with pkgs; [];
     };
   };
 
   nixpkgs.config.allowUnfree = true;
   nix.settings = {
     auto-optimise-store = true;
-    experimental-features = ["nix-command" "flakes" ];
+    experimental-features = [ "nix-command" "flakes" ];
   };
 
   environment = {

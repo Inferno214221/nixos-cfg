@@ -33,7 +33,14 @@
       betterdiscordctl
       inkscape # TODO: switch to default theme, add as svg default
       kdenlive # TODO: configure & theme
-      jetbrains.idea-community
+      vlc # TODO: qt5ct
+      jetbrains.idea-community # TODO: configure theme, keybinds, extensions, etc...
+      libreoffice # TODO: compact theme, papirus icons, keybinds
+      obs-studio
+      xmousepasteblock
+      xorg.xmodmap
+      xcape
+      galculator # TODO: stick window above
 
       # # It is sometimes useful to fine-tune packages, for example, by applying
       # # overrides. You can do that directly here, just don't forget the
@@ -47,6 +54,8 @@
       # (pkgs.writeShellScriptBin "my-hello" ''
       #   echo "Hello, ${config.home.username}!"
       # '')
+    ] ++ [
+      (pkgs.callPackage ./xfce/dynamic-workspaces.nix { inherit pkgs; })
     ]);
 
     file = {
@@ -68,6 +77,43 @@
         target = ".config/BetterDiscord";
         recursive = true;
         force = true;
+      };
+
+      galculator-config = {
+        enable = true;
+        source = ./galculator/galculator.conf;
+        target = ".config/galculator/galculator.conf";
+        force = true;
+      };
+
+      # Autostart
+      middle-click-paste-blocker = {
+        enable = true;
+        source = ./startup/middle-click-paste-blocker.desktop;
+        target = ".config/autostart/middle-click-paste-blocker.desktop";
+      };
+
+      no-bell = {
+        enable = true;
+        source = ./startup/no-bell.desktop;
+        target = ".config/autostart/no-bell.desktop";
+      };
+
+      xcape = {
+        enable = true;
+        source = ./startup/xcape.desktop;
+        target = ".config/autostart/xcape.desktop";
+      };
+
+      xmodmap = {
+        enable = true;
+        # source = ./startup/xmodmap.desktop;
+        text = ''
+          [Desktop Entry]
+          Name=xmodmap
+          Exec=xmodmap ${./startup/.xmodmap}
+        '';
+        target = ".config/autostart/xmodmap.desktop";
       };
     };
 
@@ -194,7 +240,7 @@
       launcher = {
         name = "Launcher";
         icon = "${../distributor-logo-nixos.svg}";
-        exec = "sleep 10";
+        exec = "rofi -show drun";
       };
 
       "org.gnome.Nautilus" = {

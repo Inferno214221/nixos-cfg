@@ -1,12 +1,19 @@
 { inputs, lib, config, pkgs, ... }:
 {
-  # TODO: keybinds
   # TODO: panel config
+  # TODO: workspaces
   home.file = {
     xfce-panel = {
       enable = true;
       source = ./xfce4-panel.xml;
       target = ".config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml";
+      force = true;
+    };
+
+    xfce-keyboard-shortcuts = {
+      enable = true;
+      source = ./xfce4-keyboard-shortcuts.xml;
+      target = ".config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml";
       force = true;
     };
 
@@ -31,30 +38,6 @@
   '';
 
   xdg.desktopEntries = {
-    xfce4-file-manager = {
-      name = "File Manager";
-      exec = "exo-open --launch FileManager %u";
-      noDisplay = true;
-    };
-
-    xfce4-mail-reader = {
-      name = "Mail Reader";
-      exec = "exo-open --launch MailReader %u";
-      noDisplay = true;
-    };
-
-    xfce4-terminal-emulator = {
-      name = "Terminal Emulator";
-      exec = "exo-open --launch TerminalEmulator";
-      noDisplay = true;
-    };
-
-    xfce4-web-browser = {
-      name = "Web Browser";
-      exec = "exo-open --launch WebBrowser %u";
-      noDisplay = true;
-    };
-
     sys-lock = {
       name = "Lock";
       icon = "system-lock-screen";
