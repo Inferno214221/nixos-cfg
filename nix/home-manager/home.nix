@@ -39,6 +39,7 @@
       obs-studio
       xmousepasteblock
       xorg.xmodmap
+      xorg.xkill
       xcape
       galculator # TODO: stick window above
 
@@ -241,6 +242,7 @@
         name = "Launcher";
         icon = "${../distributor-logo-nixos.svg}";
         exec = "rofi -show drun";
+        noDisplay = true;
       };
 
       "org.gnome.Nautilus" = {

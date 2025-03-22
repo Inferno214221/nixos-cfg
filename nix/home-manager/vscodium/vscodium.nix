@@ -19,7 +19,6 @@
       usernamehw.errorlens
       dbaeumer.vscode-eslint
       eamodio.gitlens # To Modify
-      # GML Support
       fwcd.kotlin
       ms-vscode.live-server
       # jnoortheen.nix-ide
@@ -30,8 +29,9 @@
       gruntfuggly.todo-tree
       vscode-icons-team.vscode-icons
       dotjoshjohnson.xml
+      mkhl.direnv
     ]) ++ (with pkgs.vscode-marketplace; [
-      redhat.java
+      # redhat.java
       ms-python.python
       redhat.vscode-xml
     ] ++ [

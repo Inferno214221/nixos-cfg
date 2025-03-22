@@ -89,11 +89,15 @@ in
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  programs.zsh.enable = true;
+  programs ={
+    zsh.enable = true;
 
-  programs.nh = {
-    enable = true;
-    flake = "/home/inferno214221/config/";
+    nh = {
+      enable = true;
+      flake = "/home/inferno214221/config/";
+    };
+
+    direnv.enable = true;
   };
 
   users = {
@@ -169,8 +173,8 @@ in
       night = "1";
     };
     temperature = {
-      day = 5500;
-      night = 3700;
+      day = 6500;
+      night = 3800;
     };
   };
 
