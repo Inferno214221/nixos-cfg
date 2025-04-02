@@ -19,6 +19,7 @@
       evince
       file-roller
       gnome-system-monitor
+      gnome-disk-utility
     ]) ++ (with pkgs; [
       gedit
       nemo-with-extensions
@@ -42,6 +43,8 @@
       xorg.xkill
       xcape
       galculator # TODO: stick window above
+      pandoc
+      pinta
 
       # # It is sometimes useful to fine-tune packages, for example, by applying
       # # overrides. You can do that directly here, just don't forget the

@@ -38,6 +38,7 @@
       (pkgs.callPackage ./kali-dark-vscode.nix { inherit pkgs; })
       (pkgs.vscode-utils.buildVscodeExtension {
         name = "markdown-editor";
+        pname = "markdown-editor";
         version = "0.1.13";
         src = ./markdown-editor.zip;
         # TODO: download (and build)?

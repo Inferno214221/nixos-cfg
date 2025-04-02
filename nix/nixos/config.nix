@@ -139,6 +139,8 @@ in
       gparted
       bluez
       distrobox
+      exfat
+      exfatprogs
     ]) ++ (with pkgs.xfce; [
       xfce4-mpc-plugin
       xfce4-systemload-plugin
