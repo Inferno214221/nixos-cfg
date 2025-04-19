@@ -64,7 +64,7 @@ in
   security.doas = {
     enable = true;
     extraRules = [
-      { groups = [ "wheel" ]; persist = true; }
+      { groups = [ "wheel" "plugdev" ]; persist = true; }
     ];
   };
 
@@ -122,6 +122,7 @@ in
       mousepad
       parole
       ristretto
+      xfce4-taskmanager
     ];
 
     # List packages installed in system profile. To search, run:

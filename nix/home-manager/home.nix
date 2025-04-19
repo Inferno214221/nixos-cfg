@@ -45,22 +45,19 @@
       galculator # TODO: stick window above
       pandoc
       pinta
-
-      # # It is sometimes useful to fine-tune packages, for example, by applying
-      # # overrides. You can do that directly here, just don't forget the
-      # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-      # # fonts?
-      # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
-      # # You can also create simple shell scripts directly inside your
-      # # configuration. For example, this adds a command 'my-hello' to your
-      # # environment:
-      # (pkgs.writeShellScriptBin "my-hello" ''
-      #   echo "Hello, ${config.home.username}!"
-      # '')
-    ] ++ [
+      corefonts
+      vistafonts
+      chromium
+      yt-dlp
+      mp3gain
+      pdftk
+      slack
+      android-studio
+    ]) ++ (with pkgs.mine; [
+      timekeeper
+    ]) ++ [
       (pkgs.callPackage ./xfce/dynamic-workspaces.nix { inherit pkgs; })
-    ]);
+    ];
 
     file = {
       gitkraken-theme = {
@@ -137,9 +134,9 @@
       "sudo" = "doas";
       "last-grass" = "history -E | grep \"touch grass\"";
       "loc" = "git ls-files | grep -v -E \"^\..*\" | grep -E \".*\.(jsx?|tsx?|html|css|cc?|java|cs|sh|py|rs)\" | xargs wc -l";
-      # "yt-dlp-mp3" = "yt-dlp -x --audio-format mp3"; TODO
-      # "mp3gain-all" = "find . -type f -name \"*.mp3\" -exec mp3gain -r \{\} +"; TODO
-      # "edit-hist" = "gedit ~/.zsh_plain/history"; TODO
+      "yt-dlp-mp3" = "yt-dlp -x --audio-format mp3";
+      "mp3gain-all" = "find . -type f -name \"*.mp3\" -exec mp3gain -r \{\} +";
+      "edit-hist" = "gedit ~/.zsh_history";
     };
 
     # sessionVariables = {
@@ -252,7 +249,6 @@
         name = "Nautilus";
         icon = "nautilus";
         exec = "nautilus --new-window %U";
-        comment = "Access and organize files";
         mimeType = [
           "inode/directory" "application/x-7z-compressed" "application/x-7z-compressed-tar" "application/x-bzip" "application/x-bzip-compressed-tar" "application/x-compress" "application/x-compressed-tar" "application/x-cpio" "application/x-gzip" "application/x-lha" "application/x-lzip" "application/x-lzip-compressed-tar" "application/x-lzma" "application/x-lzma-compressed-tar" "application/x-tar" "application/x-tarz" "application/x-xar" "application/x-xz" "application/x-xz-compressed-tar" "application/zip" "application/gzip" "application/bzip2" "application/vnd.rar"
         ];
@@ -268,7 +264,6 @@
         name = "Gedit";
         icon = "org.gnome.gedit";
         exec = "gedit %U";
-        comment = "Edit text files";
         mimeType = [
           "text/plain" "application/x-zerosize"
         ];
@@ -288,10 +283,21 @@
         name = "GIMP";
         icon = "gimp";
         exec = "gimp-2.10 %U";
-        comment = "Create images and edit photographs";
         mimeType = [
           "image/bmp" "image/g3fax" "image/gif" "image/x-fits" "image/x-pcx" "image/x-portable-anymap" "image/x-portable-bitmap" "image/x-portable-graymap" "image/x-portable-pixmap" "image/x-psd" "image/x-sgi" "image/x-tga" "image/x-xbitmap" "image/x-xwindowdump" "image/x-xcf" "image/x-compressed-xcf" "image/x-gimp-gbr" "image/x-gimp-pat" "image/x-gimp-gih" "image/x-sun-raster" "image/tiff" "image/jpeg" "image/x-psp" "application/postscript" "image/png" "image/x-icon" "image/x-xpixmap" "image/x-exr" "image/webp" "image/x-webp" "image/heif" "image/heic" "image/avif" "image/jxl" "image/svg+xml" "application/pdf" "image/x-wmf" "image/jp2" "image/x-xcursor"
         ];
+      };
+
+      idea-community = {
+        name = "IntelliJ IDEA";
+        icon = "idea-community";
+        exec = "idea-community";
+      };
+
+      android-studio = {
+        name = "Android Studio";
+        icon = "android-studio";
+        exec = "android-studio";
       };
     };
   };
