@@ -98,6 +98,8 @@ in
     };
 
     direnv.enable = true;
+
+    adb.enable = true;
   };
 
   users = {
@@ -106,7 +108,7 @@ in
     users.inferno214221 = {
       isNormalUser = true;
       description = "Inferno214221";
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = [ "networkmanager" "wheel" "docker" "plugdev" "adbusers" ];
       packages = with pkgs; [];
     };
   };
@@ -185,7 +187,12 @@ in
 
   virtualisation.podman = {
     enable = true;
-    dockerCompat = true;
+    # dockerCompat = true;
+  };
+
+  virtualisation.docker = {
+    enable = true;
+    # setSocketVariable = true;
   };
 
   # Some programs need SUID wrappers, can be configured further or are

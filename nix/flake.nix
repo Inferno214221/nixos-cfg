@@ -19,12 +19,21 @@
       url = "github:vinceliuice/grub2-themes";
     };
 
-    rust-overlay.url = "github:oxalica/rust-overlay";
+    # rust-overlay.url = "github:oxalica/rust-overlay";
 
     timekeeper.url = "github:Inferno214221/timekeeper";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-old, nix-vscode-extensions, home-manager, grub2-themes, rust-overlay, timekeeper }:
+  outputs = {
+    self,
+    nixpkgs,
+    nixpkgs-old,
+    nix-vscode-extensions,
+    home-manager,
+    grub2-themes,
+    # rust-overlay,
+    timekeeper
+  }:
   let
     system = "x86_64-linux";
 
@@ -77,7 +86,7 @@
           ({ config, pkgs, ... }: { nixpkgs.overlays = [
             overlay-old
             nix-vscode-extensions.overlays.default
-            rust-overlay.overlays.default
+            # rust-overlay.overlays.default
             overlay-my-pkgs
           ]; })
           ./home-manager/home.nix

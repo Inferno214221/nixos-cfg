@@ -53,6 +53,9 @@
       pdftk
       slack
       android-studio
+      baobab
+      ffmpeg
+      imagemagick
     ]) ++ (with pkgs.mine; [
       timekeeper
     ]) ++ [
@@ -132,8 +135,7 @@
       "la" = "ls -a";
       "bat" = "echo \"$(cat /sys/class/power_supply/BAT1/capacity)%\"";
       "sudo" = "doas";
-      "last-grass" = "history -E | grep \"touch grass\"";
-      "loc" = "git ls-files | grep -v -E \"^\..*\" | grep -E \".*\.(jsx?|tsx?|html|css|cc?|java|cs|sh|py|rs)\" | xargs wc -l";
+      "loc" = "git ls-files | grep -v -E \"^\..*\" | grep -E \".*\.(jsx?|tsx?|html|css?|cc?|java|sh|py|rs)\" | xargs wc -l";
       "yt-dlp-mp3" = "yt-dlp -x --audio-format mp3";
       "mp3gain-all" = "find . -type f -name \"*.mp3\" -exec mp3gain -r \{\} +";
       "edit-hist" = "gedit ~/.zsh_history";
@@ -288,6 +290,7 @@
         ];
       };
 
+      # TODO: window class thing
       idea-community = {
         name = "IntelliJ IDEA";
         icon = "idea-community";
