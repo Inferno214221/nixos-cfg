@@ -1,5 +1,6 @@
-{ inputs, lib, config, pkgs, ... }:
-{
+{ inputs, lib, config, pkgs, ... }: let
+  mkPkgGroup = import ../util/pkg-group.nix { inherit pkgs lib; };
+in {
   imports = [
     ./firefox/firefox.nix
     ./gimp/gimp.nix
@@ -14,13 +15,7 @@
     username = "inferno214221";
     homeDirectory = "/home/inferno214221/";
 
-    packages = (with pkgs.old.gnome; [
-      nautilus
-      evince
-      file-roller
-      gnome-system-monitor
-      gnome-disk-utility
-    ]) ++ (with pkgs; [
+    packages = (with pkgs; [ # Current, Standard Packages
       gedit
       nemo-with-extensions
       gitkraken
@@ -56,11 +51,26 @@
       baobab
       ffmpeg
       imagemagick
-    ]) ++ (with pkgs.mine; [
+    ]) ++ ([ # Package Groups
+      (mkPkgGroup {
+        name = "Test";
+        packages = with pkgs; [
+          hello
+          neofetch
+          eclipses.eclipse-java
+        ];
+      })
+    ]) ++ (with pkgs.old.gnome; [ # Old Gnome Packages
+      nautilus
+      evince
+      file-roller
+      gnome-system-monitor
+      gnome-disk-utility
+    ]) ++ (with pkgs.mine; [ # My Software (Flakes)
       timekeeper
-    ]) ++ [
+    ]) ++ ([ # My Packages
       (pkgs.callPackage ./xfce/dynamic-workspaces.nix { inherit pkgs; })
-    ];
+    ]);
 
     file = {
       gitkraken-theme = {
@@ -203,7 +213,7 @@
 
     theme = {
       name = "Kali-Dark";
-      package = import ../pkgs/kali-dark-theme.nix { inherit pkgs; };
+      package = import ./kali-dark/kali-dark-theme.nix { inherit pkgs; };
     };
 
     iconTheme = {
@@ -290,17 +300,18 @@
         ];
       };
 
-      # TODO: window class thing
       idea-community = {
         name = "IntelliJ IDEA";
         icon = "idea-community";
         exec = "idea-community";
+        settings.StartupWMClass = "jetbrains-idea-ce";
       };
 
       android-studio = {
         name = "Android Studio";
         icon = "android-studio";
         exec = "android-studio";
+        settings.StartupWMClass = "jetbrains-studio";
       };
     };
   };

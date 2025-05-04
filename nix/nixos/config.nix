@@ -120,6 +120,8 @@ in
   };
 
   environment = {
+    # TODO: theme login screen by install kali-dark
+    # TODO: tweak kali-dark
     xfce.excludePackages = with pkgs.xfce; [
       mousepad
       parole
