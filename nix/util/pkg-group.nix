@@ -1,6 +1,7 @@
 { pkgs, lib }:
 ({
   name,
+  icon ? null,
   packages
 } @ options: let
   sanitizedName = lib.strings.sanitizeDerivationName (lib.strings.toLower options.name);
@@ -33,10 +34,13 @@ in pkgs.symlinkJoin {
   paths = [
     activationScript
     (pkgs.makeDesktopItem rec {
-      # TODO: optional hide, icon
+      # TODO: optional hide
       name = activateName;
       desktopName = "Activate '${options.name}'";
+      # TODO: not optional
+      icon = options.icon;
       exec = "${activationScript}/bin/${activateName} %f";
+      categories = [ "X-NixPkgGroup" ];
     })
   ];
 })

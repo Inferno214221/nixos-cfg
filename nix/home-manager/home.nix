@@ -26,7 +26,7 @@ in {
       sayonara
       thunderbird
       curl
-      betterdiscordctl
+      # betterdiscordctl
       inkscape # TODO: switch to default theme, add as svg default
       kdenlive # TODO: configure & theme
       vlc # TODO: qt5ct
@@ -54,6 +54,7 @@ in {
     ]) ++ ([ # Package Groups
       (mkPkgGroup {
         name = "Test";
+        icon = "";
         packages = with pkgs; [
           hello
           neofetch
@@ -66,6 +67,8 @@ in {
       file-roller
       gnome-system-monitor
       gnome-disk-utility
+    ]) ++ (with pkgs.unstable; [ # Unstable Packages
+      # TODO: GIMP 3.0
     ]) ++ (with pkgs.mine; [ # My Software (Flakes)
       timekeeper
     ]) ++ ([ # My Packages
@@ -253,8 +256,15 @@ in {
       launcher = {
         name = "Launcher";
         icon = "${../distributor-logo-nixos.svg}";
-        exec = "rofi -show drun";
+        exec = "rofi -show drun -drun-exclude-categories X-NixPkgGroup";
         noDisplay = true;
+      };
+
+      group-manager = {
+        name = "Package Groups...";
+        icon = "${../distributor-logo-nixos.svg}";
+        exec = "rofi -show drun -drun-categories X-NixPkgGroup";
+        # noDisplay = true;
       };
 
       "org.gnome.Nautilus" = {

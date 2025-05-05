@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-24.11";
     nixpkgs-old.url = "nixpkgs/nixos-22.05";
+    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
 
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
@@ -28,6 +29,7 @@
     self,
     nixpkgs,
     nixpkgs-old,
+    nixpkgs-unstable,
     nix-vscode-extensions,
     home-manager,
     grub2-themes,
@@ -42,8 +44,12 @@
       config.allowUnfree = true;
     };
 
-    overlay-old = final: prev: {
+    overlay-versions = final: prev: {
       old = import nixpkgs-old {
+        inherit system;
+        config.allowUnfree = true;
+      };
+      unstable = import nixpkgs-unstable {
         inherit system;
         config.allowUnfree = true;
       };
@@ -71,7 +77,7 @@
         specialArgs = { inherit system; };
         modules = [
           ({ config, pkgs, ... }: { nixpkgs.overlays = [
-            overlay-old
+            overlay-versions
             overlay-doas
           ]; })
           ./nixos/config.nix
@@ -84,7 +90,7 @@
         inherit pkgs;
         modules = [
           ({ config, pkgs, ... }: { nixpkgs.overlays = [
-            overlay-old
+            overlay-versions
             nix-vscode-extensions.overlays.default
             # rust-overlay.overlays.default
             overlay-my-pkgs

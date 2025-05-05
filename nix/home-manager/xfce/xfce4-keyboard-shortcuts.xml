@@ -50,7 +50,7 @@
       <property name="Menu" type="string" value="galculator"/>
       <property name="&lt;Primary&gt;&lt;Shift&gt;Escape" type="string" value="gnome-system-monitor"/>
       <property name="Calculator" type="string" value="galculator"/>
-      <property name="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;&lt;Super&gt;space" type="string" value="rofi -show drun"/>
+      <property name="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;&lt;Super&gt;space" type="string" value="rofi -show drun -drun-exclude-categories X-NixPkgGroup"/>
       <property name="Print" type="string" value="printscrn"/>
       <property name="&lt;Super&gt;Print" type="string" value="printscrn+super"/>
       <property name="&lt;Shift&gt;Print" type="string" value="printscrn+shift"/>
