@@ -17,6 +17,7 @@
       force = true;
     };
 
+    # TODO: write application entries to file
     xfce-docklike = {
       enable = true;
       source = ./docklike.rc;

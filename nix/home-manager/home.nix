@@ -16,61 +16,107 @@ in {
     homeDirectory = "/home/inferno214221/";
 
     packages = (with pkgs; [ # Current, Standard Packages
-      gedit
+      (gedit.overrideAttrs (old: let
+          program = "gedit";
+          desktopEntry = pkgs.makeDesktopItem {
+            desktopName = "Gedit";
+            name = program;
+            icon = program;
+            exec = "${program} %U";
+            mimeTypes = [
+              "text/plain" "application/x-zerosize"
+            ];
+            actions = {
+              new-window = {
+                name = "New Window";
+                exec = "${program} --new-window";
+              };
+              new-document = {
+                name = "New Document";
+                exec = "${program} --new-document";
+              };
+            };
+          };
+        in {
+        postInstall = ''
+          rm $out/share/applications/*
+          ln -s ${desktopEntry}/share/applications/${program}.desktop $out/share/applications/${program}.desktop
+        '';
+      }))
       nemo-with-extensions
       gitkraken
       shotwell
       xcape
       discord
-      # cinny-desktop
-      sayonara
-      thunderbird
+      # # sayonara
+      # # thunderbird
       curl
       # betterdiscordctl
-      inkscape # TODO: switch to default theme, add as svg default
-      kdenlive # TODO: configure & theme
       vlc # TODO: qt5ct
-      jetbrains.idea-community # TODO: configure theme, keybinds, extensions, etc...
-      libreoffice # TODO: compact theme, papirus icons, keybinds
-      obs-studio
       xmousepasteblock
       xorg.xmodmap
       xorg.xkill
       xcape
       galculator # TODO: stick window above
       pandoc
-      pinta
+      texlive.combined.scheme-small
+      typst
       corefonts
       vistafonts
-      chromium
+      # chromium
       yt-dlp
       mp3gain
       pdftk
-      slack
-      android-studio
+      # android-studio
       baobab
       ffmpeg
       imagemagick
-    ]) ++ ([ # Package Groups
-      (mkPkgGroup {
-        name = "Test";
-        icon = "";
-        packages = with pkgs; [
-          hello
-          neofetch
-          eclipses.eclipse-java
-        ];
-      })
+      nix-tree
+      youtube-music
+      units
+      jetbrains.idea-community-src # TODO: configure theme, keybinds, extensions, etc...
+      android-studio
+      eclipses.eclipse-java
+      slack
+      mine.timekeeper
+      libreoffice # TODO: compact theme, papirus icons, keybinds
+      chromium
+      inkscape # TODO: switch to default theme, add as svg default
+      pinta
+      kdenlive # TODO: configure & theme
+      obs-studio
     ]) ++ (with pkgs.old.gnome; [ # Old Gnome Packages
-      nautilus
+      (nautilus.overrideAttrs (old: let
+          program = "org.gnome.Nautilus";
+          desktopEntry = pkgs.makeDesktopItem {
+            desktopName = "Nautilus";
+            name = program;
+            icon = "nautilus";
+            exec = "nautilus --new-window %U";
+            mimeTypes = [
+              "inode/directory" "application/x-7z-compressed" "application/x-7z-compressed-tar" "application/x-bzip" "application/x-bzip-compressed-tar" "application/x-compress" "application/x-compressed-tar" "application/x-cpio" "application/x-gzip" "application/x-lha" "application/x-lzip" "application/x-lzip-compressed-tar" "application/x-lzma" "application/x-lzma-compressed-tar" "application/x-tar" "application/x-tarz" "application/x-xar" "application/x-xz" "application/x-xz-compressed-tar" "application/zip" "application/gzip" "application/bzip2" "application/vnd.rar"
+            ];
+            actions = {
+              new-window = {
+                name = "New Window";
+                exec = "nautilus --new-window";
+              };
+            };
+          };
+        in {
+        postInstall = ''
+          rm $out/share/applications/*
+          ln -s ${desktopEntry}/share/applications/${program}.desktop $out/share/applications/${program}.desktop
+        '';
+      }))
       evince
       file-roller
       gnome-system-monitor
       gnome-disk-utility
     ]) ++ (with pkgs.unstable; [ # Unstable Packages
-      # TODO: GIMP 3.0
+      # Placeholder
     ]) ++ (with pkgs.mine; [ # My Software (Flakes)
-      timekeeper
+      # timekeeper
     ]) ++ ([ # My Packages
       (pkgs.callPackage ./xfce/dynamic-workspaces.nix { inherit pkgs; })
     ]);
@@ -141,17 +187,18 @@ in {
       "snix" = "nh os switch path:/home/inferno214221/config/nix";
       "tnix" = "nh os test path:/home/inferno214221/config/nix";
       "hix" = "nh home switch path:/home/inferno214221/config/nix";
-      "clix" = "nh clean all";
+      "clix" = "nh clean all --nogcroots";
       "nup" = "nix flake update --flake path:/home/inferno214221/config/nix";
 
       "ll" = "ls -l";
       "la" = "ls -a";
       "bat" = "echo \"$(cat /sys/class/power_supply/BAT1/capacity)%\"";
       "sudo" = "doas";
-      "loc" = "git ls-files | grep -v -E \"^\..*\" | grep -E \".*\.(jsx?|tsx?|html|css?|cc?|java|sh|py|rs)\" | xargs wc -l";
+      "loc" = "git ls-files | grep -v -E \"^\\..*\" | grep -E \".*\\.(jsx?|tsx?|html|css?|cc?|java|sh|py|rs)\" | xargs wc -l";
       "yt-dlp-mp3" = "yt-dlp -x --audio-format mp3";
       "mp3gain-all" = "find . -type f -name \"*.mp3\" -exec mp3gain -r \{\} +";
       "edit-hist" = "gedit ~/.zsh_history";
+      "units" = "units -1 --compact";
     };
 
     # sessionVariables = {
@@ -256,7 +303,7 @@ in {
       launcher = {
         name = "Launcher";
         icon = "${../distributor-logo-nixos.svg}";
-        exec = "rofi -show drun -drun-exclude-categories X-NixPkgGroup";
+        exec = "rofi -show drun -drun-exclude-categories XFCE,X-XFCE,X-XFCE-SettingsDialog,X-NixPkgGroup";
         noDisplay = true;
       };
 
@@ -267,48 +314,16 @@ in {
         # noDisplay = true;
       };
 
-      "org.gnome.Nautilus" = {
-        name = "Nautilus";
-        icon = "nautilus";
-        exec = "nautilus --new-window %U";
-        mimeType = [
-          "inode/directory" "application/x-7z-compressed" "application/x-7z-compressed-tar" "application/x-bzip" "application/x-bzip-compressed-tar" "application/x-compress" "application/x-compressed-tar" "application/x-cpio" "application/x-gzip" "application/x-lha" "application/x-lzip" "application/x-lzip-compressed-tar" "application/x-lzma" "application/x-lzma-compressed-tar" "application/x-tar" "application/x-tarz" "application/x-xar" "application/x-xz" "application/x-xz-compressed-tar" "application/zip" "application/gzip" "application/bzip2" "application/vnd.rar"
-        ];
-        actions = {
-          new-window = {
-            name = "New Window";
-            exec = "nautilus --new-window";
-          };
-        };
-      };
+      # TODO: move these to overlays
 
-      "org.gnome.gedit" = {
-        name = "Gedit";
-        icon = "org.gnome.gedit";
-        exec = "gedit %U";
-        mimeType = [
-          "text/plain" "application/x-zerosize"
-        ];
-        actions = {
-          new-window = {
-            name = "New Window";
-            exec = "gedit --new-window";
-          };
-          new-document = {
-            name = "New Document";
-            exec = "gedit --new-document";
-          };
-        };
-      };
-
-      gimp = {
-        name = "GIMP";
-        icon = "gimp";
-        exec = "gimp-2.10 %U";
-        mimeType = [
-          "image/bmp" "image/g3fax" "image/gif" "image/x-fits" "image/x-pcx" "image/x-portable-anymap" "image/x-portable-bitmap" "image/x-portable-graymap" "image/x-portable-pixmap" "image/x-psd" "image/x-sgi" "image/x-tga" "image/x-xbitmap" "image/x-xwindowdump" "image/x-xcf" "image/x-compressed-xcf" "image/x-gimp-gbr" "image/x-gimp-pat" "image/x-gimp-gih" "image/x-sun-raster" "image/tiff" "image/jpeg" "image/x-psp" "application/postscript" "image/png" "image/x-icon" "image/x-xpixmap" "image/x-exr" "image/webp" "image/x-webp" "image/heif" "image/heic" "image/avif" "image/jxl" "image/svg+xml" "application/pdf" "image/x-wmf" "image/jp2" "image/x-xcursor"
-        ];
-      };
+      # gimp = {
+      #   name = "GIMP";
+      #   icon = "gimp";
+      #   exec = "gimp-2.10 %U";
+      #   mimeType = [
+      #     "image/bmp" "image/g3fax" "image/gif" "image/x-fits" "image/x-pcx" "image/x-portable-anymap" "image/x-portable-bitmap" "image/x-portable-graymap" "image/x-portable-pixmap" "image/x-psd" "image/x-sgi" "image/x-tga" "image/x-xbitmap" "image/x-xwindowdump" "image/x-xcf" "image/x-compressed-xcf" "image/x-gimp-gbr" "image/x-gimp-pat" "image/x-gimp-gih" "image/x-sun-raster" "image/tiff" "image/jpeg" "image/x-psp" "application/postscript" "image/png" "image/x-icon" "image/x-xpixmap" "image/x-exr" "image/webp" "image/x-webp" "image/heif" "image/heic" "image/avif" "image/jxl" "image/svg+xml" "application/pdf" "image/x-wmf" "image/jp2" "image/x-xcursor"
+      #   ];
+      # };
 
       idea-community = {
         name = "IntelliJ IDEA";

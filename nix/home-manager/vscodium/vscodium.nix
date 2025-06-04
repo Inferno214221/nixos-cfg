@@ -14,7 +14,7 @@
       alefragnani.bookmarks
       antfu.browse-lite
       streetsidesoftware.code-spell-checker
-      vadimcn.vscode-lldb
+      # vadimcn.vscode-lldb
       moshfeu.diff-merge
       usernamehw.errorlens
       dbaeumer.vscode-eslint

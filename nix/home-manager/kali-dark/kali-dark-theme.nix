@@ -1,7 +1,6 @@
 { pkgs }:
 pkgs.stdenv.mkDerivation {
-  name = "Kali-Dark";
-  pname = "kali-dark";
+  name = "kali-dark";
 
   src = pkgs.fetchurl {
     url = "https://gitlab.com/kalilinux/packages/kali-themes/-/archive/kali/2024.2.1/kali-themes-kali-2024.2.1.tar.gz";

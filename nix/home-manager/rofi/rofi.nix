@@ -25,6 +25,9 @@
         fetchSubmodules = true;
         hash = "sha256-VtG9B1YOHRsiNKO4ysAWMIpEDWaA5H2fk79WWE315RI=";
       };
+      postInstall = ''
+        rm $out/share/applications/*
+      '';
     });
   };
 }

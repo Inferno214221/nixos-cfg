@@ -52,6 +52,8 @@ in
 
     displayManager.lightdm.enable = true;
     desktopManager.xfce.enable = true;
+
+    excludePackages = [ pkgs.xterm ];
   };
 
   # Enable CUPS to print documents.
@@ -97,7 +99,10 @@ in
       flake = "/home/inferno214221/config/";
     };
 
-    direnv.enable = true;
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
 
     adb.enable = true;
   };
@@ -127,6 +132,7 @@ in
       parole
       ristretto
       xfce4-taskmanager
+      xfce4-screenshooter
     ];
 
     # List packages installed in system profile. To search, run:
@@ -137,8 +143,10 @@ in
       wget
       tldr
       tree
+      killall
       home-manager
       fastfetch
+      dos2unix
       glibc
       btrfs-progs
       gparted

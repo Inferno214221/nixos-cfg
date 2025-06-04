@@ -2,7 +2,8 @@
 ({
   name,
   icon ? null,
-  packages
+  packages,
+  priority ? 4
 } @ options: let
   sanitizedName = lib.strings.sanitizeDerivationName (lib.strings.toLower options.name);
   pkgGroupPathName = "${sanitizedName}-pkg-group-path";
@@ -24,7 +25,7 @@
         nix profile remove ${pkgGroupPath} > /dev/null 2>&1 ||
         echo "Failed to remove group!"
       else
-        nix profile install ${pkgGroupPath} > /dev/null 2>&1 ||
+        nix profile install ${pkgGroupPath} --priority ${toString priority} > /dev/null 2>&1 ||
         echo "Failed to add group!"
       fi
     '';
@@ -33,12 +34,12 @@ in pkgs.symlinkJoin {
   name = "${sanitizedName}-pkg-group-activation";
   paths = [
     activationScript
-    (pkgs.makeDesktopItem rec {
+    (pkgs.makeDesktopItem {
       # TODO: optional hide
       name = activateName;
       desktopName = "Activate '${options.name}'";
       # TODO: not optional
-      icon = options.icon;
+      icon = icon;
       exec = "${activationScript}/bin/${activateName} %f";
       categories = [ "X-NixPkgGroup" ];
     })

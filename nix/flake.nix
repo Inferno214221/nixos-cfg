@@ -1,5 +1,5 @@
 {
-  description = "A very basic flake";
+  description = "Inferno214221's System Flake";
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-24.11";
@@ -22,7 +22,7 @@
 
     # rust-overlay.url = "github:oxalica/rust-overlay";
 
-    timekeeper.url = "github:Inferno214221/timekeeper";
+    timekeeper.url = "github:inferno214221/timekeeper";
   };
 
   outputs = {
@@ -55,8 +55,35 @@
       };
     };
 
-    overlay-doas = final: prev: {
+    overlay-sys-tweaks = final: prev: {
       doas = prev.callPackage ./nixos/doas/doas.nix { inherit prev; };
+      blueman = prev.blueman.overrideAttrs (old: {
+        postInstall = ''
+          sed -i -e "s/Categories=/Categories=X-XFCE;X-XFCE-SettingsDialog;/g" $out/share/applications/blueman-manager.desktop
+        '';
+      });
+      network-manager-applet = prev.network-manager-applet.overrideAttrs (old: {
+        postInstall = ''
+          sed -i -e "s/Categories=/Categories=X-XFCE;X-XFCE-SettingsDialog;/g" $out/share/applications/nm-connection-editor.desktop
+        '';
+      });
+      nvidia-settings = prev.nvidia-settings.overrideAttrs (old: {
+        postInstall = ''
+          sed -i -e "s/Categories=Settings/Categories=X-XFCE;X-XFCE-SettingsDialog;Settings;/g" $out/share/applications/nvidia-settings.desktop
+        '';
+      });
+      # cups = prev.cups.overrideAttrs (old: {
+      #   postInstall = old.postInstall + ''
+      #     chmod +w $out/share/applications/cups.desktop
+      #     echo "Categories=X-XFCE;X-XFCE-SettingsDialog;Settings;" >> $out/share/applications/cups.desktop
+      #     chmod -w $out/share/applications/cups.desktop
+      #   '';
+      # });
+      redshift = prev.redshift.overrideAttrs (old: {
+        postInstall = ''
+          echo "NoDisplay=true" >> $out/share/applications/redshift.desktop
+        '';
+      });
     };
 
     # Overlay for my packages
@@ -78,7 +105,7 @@
         modules = [
           ({ config, pkgs, ... }: { nixpkgs.overlays = [
             overlay-versions
-            overlay-doas
+            overlay-sys-tweaks
           ]; })
           ./nixos/config.nix
           grub2-themes.nixosModules.default

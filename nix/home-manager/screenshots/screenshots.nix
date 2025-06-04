@@ -5,7 +5,11 @@
       maim
       tesseract
       xclip
-      xcolor
+      (xcolor.overrideAttrs (old: {
+        postFixup = ''
+          rm $out/share/applications/*
+        '';
+      }))
       feh
 
       (pkgs.writeShellScriptBin "printscrn" ''

@@ -57,6 +57,8 @@
         splashImage = ../home-manager/pictures/bg0.png;
       };
     };
+
+    supportedFilesystems = [ "ntfs" ];
   };
 
   fileSystems = {
