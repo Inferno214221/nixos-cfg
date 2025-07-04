@@ -24,10 +24,9 @@
       target = ".mozilla/firefox/g9bnymtb.default/firefox-new-tab";
     };
 
-    # TODO: Download & build from source
     simple-tab-groups-tweak = {
       enable = true;
-      source = ./simple-tab-groups/addon/dist-zip/dist.xpi;
+      source = "${pkgs.mine.simple-tab-groups}/simple-tab-groups@drive4ik.xpi";
       target = ".mozilla/firefox/g9bnymtb.default/extensions/simple-tab-groups@drive4ik.xpi";
       force = true;
     };

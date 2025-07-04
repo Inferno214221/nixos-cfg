@@ -78,13 +78,13 @@ in {
       android-studio
       eclipses.eclipse-java
       slack
-      mine.timekeeper
       libreoffice # TODO: compact theme, papirus icons, keybinds
       chromium
       inkscape # TODO: switch to default theme, add as svg default
       pinta
       kdenlive # TODO: configure & theme
       obs-studio
+      mine.timekeeper
     ]) ++ (with pkgs.old.gnome; [ # Old Gnome Packages
       (nautilus.overrideAttrs (old: let
           program = "org.gnome.Nautilus";
@@ -115,10 +115,8 @@ in {
       gnome-disk-utility
     ]) ++ (with pkgs.unstable; [ # Unstable Packages
       # Placeholder
-    ]) ++ (with pkgs.mine; [ # My Software (Flakes)
-      # timekeeper
-    ]) ++ ([ # My Packages
-      (pkgs.callPackage ./xfce/dynamic-workspaces.nix { inherit pkgs; })
+    # ]) ++ ([ # My Packages
+    #   (pkgs.callPackage ./xfce/dynamic-workspaces.nix { inherit pkgs; })
     ]);
 
     file = {

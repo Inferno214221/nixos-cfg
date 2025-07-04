@@ -23,6 +23,7 @@
     # rust-overlay.url = "github:oxalica/rust-overlay";
 
     timekeeper.url = "github:inferno214221/timekeeper";
+    simple-tab-groups.url = "github:inferno214221/simple-tab-groups";
   };
 
   outputs = {
@@ -34,7 +35,8 @@
     home-manager,
     grub2-themes,
     # rust-overlay,
-    timekeeper
+    timekeeper,
+    simple-tab-groups
   }:
   let
     system = "x86_64-linux";
@@ -90,14 +92,9 @@
     overlay-my-pkgs = final: prev: {
       mine = {
         timekeeper = timekeeper.packages."${system}".default;
+        simple-tab-groups = simple-tab-groups.packages."${system}".default;
       };
     };
-
-    # overlay-os-prober = final: prev: {
-    #   os-prober = prev.os-prober.overrideAttrs (prevAttrs: {
-    #     patches = [];
-    #   });
-    # };
   in {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
