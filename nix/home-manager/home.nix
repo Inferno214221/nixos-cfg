@@ -93,7 +93,7 @@ in {
       obs-studio
       mine.timekeeper
     ]) ++ (with pkgs.old.gnome; [ # Old Gnome Packages
-      (nautilus.overrideAttrs (old: let
+      (nautilus.overrideAttrs (prev: let
           program = "org.gnome.Nautilus";
           desktopEntry = pkgs.makeDesktopItem {
             desktopName = "Nautilus";
@@ -111,10 +111,24 @@ in {
             };
           };
         in {
-        postInstall = ''
-          rm $out/share/applications/*
-          ln -s ${desktopEntry}/share/applications/${program}.desktop $out/share/applications/${program}.desktop
-        '';
+          preFixup = ''
+            gappsWrapperArgs+=(
+              # Add old version to GIO_EXTRA_MODULES to fix access to trash:// and other gvfs.
+              --prefix GIO_EXTRA_MODULES : "${pkgs.old.gnome.gvfs}/lib/gio/modules"
+
+              # Thumbnailers (Copied from 22.05 nautilus derivation).
+              --prefix XDG_DATA_DIRS : "${pkgs.old.gdk-pixbuf}/share"
+              --prefix XDG_DATA_DIRS : "${pkgs.old.librsvg}/share"
+
+              # Use new version to fix crash when encountering *.mjs files.
+              --prefix XDG_DATA_DIRS : "${pkgs.shared-mime-info}/share"
+            )
+          '';
+          
+          postInstall = ''
+            rm $out/share/applications/*
+            ln -s ${desktopEntry}/share/applications/${program}.desktop $out/share/applications/${program}.desktop
+          '';
       }))
       evince
       file-roller
@@ -218,6 +232,12 @@ in {
     #     # "$bd_asar" > "$d_core/index.js"
     #   '';
     # };
+    activation = {
+      # This reverts the font size change that occurs on activation.
+      fixFontSize = lib.hm.dag.entryAfter ["writeBoundary"] ''
+        run ${pkgs.xfce.xfconf}/bin/xfconf-query -c xsettings -p /Gtk/FontName -t string -s "Ubuntu 11"
+      '';
+    };
   };
 
   programs = {
