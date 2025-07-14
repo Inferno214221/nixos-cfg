@@ -9,13 +9,22 @@ in {
     ./vscodium/vscodium.nix
     ./xfce/xfce.nix
     ./zsh/zsh.nix
+    ./work/work.nix
   ];
+
+  # TODO: Rename heaps of desktop entires:
+  # gedit -> Gedit
+  # Firefox ESR -> Firefox
+  # GNU Image Manipulation Program -> GIMP
+  # VSCodium - URL Handler -> VSCodium
+  # GitKraken Desktop -> GitKraken
 
   home = {
     username = "inferno214221";
     homeDirectory = "/home/inferno214221/";
 
     packages = (with pkgs; [ # Current, Standard Packages
+      # TODO: Fix Gedit theme
       (gedit.overrideAttrs (old: let
           program = "gedit";
           desktopEntry = pkgs.makeDesktopItem {
@@ -76,13 +85,11 @@ in {
       units
       jetbrains.idea-community-src # TODO: configure theme, keybinds, extensions, etc...
       android-studio
-      eclipses.eclipse-java
-      slack
       libreoffice # TODO: compact theme, papirus icons, keybinds
       chromium
       inkscape # TODO: switch to default theme, add as svg default
       pinta
-      kdenlive # TODO: configure & theme
+      kdePackages.kdenlive # TODO: configure & theme
       obs-studio
       mine.timekeeper
     ]) ++ (with pkgs.old.gnome; [ # Old Gnome Packages
@@ -305,12 +312,12 @@ in {
         noDisplay = true;
       };
 
-      group-manager = {
-        name = "Package Groups...";
-        icon = "${../distributor-logo-nixos.svg}";
-        exec = "rofi -show drun -drun-categories X-NixPkgGroup";
-        # noDisplay = true;
-      };
+      # group-manager = {
+      #   name = "Package Groups...";
+      #   icon = "${../distributor-logo-nixos.svg}";
+      #   exec = "rofi -show drun -drun-categories X-NixPkgGroup";
+      #   # noDisplay = true;
+      # };
 
       # TODO: move these to overlays
 

@@ -17,6 +17,13 @@
       force = true;
     };
 
+    x-settings = {
+      enable = true;
+      source = ./xsettings.xml;
+      target = ".config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml";
+      force = true;
+    };
+
     # TODO: write application entries to file
     xfce-docklike = {
       enable = true;

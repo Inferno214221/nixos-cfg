@@ -6,10 +6,12 @@
     # userSettings = {};
     # keybindings = [];
     mutableExtensionsDir = false;
-    extensions = (with pkgs.open-vsx; [
+    # TODO: Should total define profiles
+    profiles.default.extensions = (with pkgs.open-vsx; [
       streetsidesoftware.code-spell-checker-australian-english
       edwinhuish.better-comments-next
-      bungcip.better-toml
+      # bungcip.better-toml
+      tamasfe.even-better-toml
       uloco.theme-bluloco-dark
       alefragnani.bookmarks
       antfu.browse-lite
@@ -33,7 +35,7 @@
     ]) ++ (with pkgs.vscode-marketplace; [
       # redhat.java
       ms-python.python
-      redhat.vscode-xml
+      # redhat.vscode-xml
     ] ++ [
       (pkgs.callPackage ./kali-dark-vscode.nix { inherit pkgs; })
       (pkgs.vscode-utils.buildVscodeExtension {

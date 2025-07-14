@@ -3,7 +3,7 @@
   home = {
     packages = (with pkgs; [
       gimp-with-plugins
-      gimpPlugins.gap
+      # gimpPlugins.gap
       gimpPlugins.gmic
       gimpPlugins.bimp
       # gimpPlugins.resynthesizer
