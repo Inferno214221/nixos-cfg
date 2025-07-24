@@ -93,6 +93,8 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
+  time.hardwareClockInLocalTime = false;
+
   hardware = {
     bluetooth.enable = true;
 

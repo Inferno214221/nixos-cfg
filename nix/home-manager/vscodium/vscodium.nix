@@ -6,7 +6,7 @@
     # userSettings = {};
     # keybindings = [];
     mutableExtensionsDir = false;
-    # TODO: Should total define profiles
+    # TODO: Should totally define profiles
     profiles.default.extensions = (with pkgs.open-vsx; [
       streetsidesoftware.code-spell-checker-australian-english
       edwinhuish.better-comments-next

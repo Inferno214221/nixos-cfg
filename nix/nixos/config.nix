@@ -9,88 +9,90 @@ in
 
   networking = {
     hostName = "nixos";
-    # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-    # Configure network proxy if necessary
-    # proxy.default = "http://user:password@proxy:port/";
-    # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
     networkmanager.enable = true;
   };
 
-  time = {
-    timeZone = "Australia/Adelaide";
-    hardwareClockInLocalTime = true;
-  };
+  time.timeZone = "Australia/Adelaide";
 
-  i18n = {
+  i18n = rec {
     defaultLocale = "en_AU.UTF-8";
 
     extraLocaleSettings = {
-      LC_ADDRESS = "en_AU.UTF-8";
-      LC_IDENTIFICATION = "en_AU.UTF-8";
-      LC_MEASUREMENT = "en_AU.UTF-8";
-      LC_MONETARY = "en_AU.UTF-8";
-      LC_NAME = "en_AU.UTF-8";
-      LC_NUMERIC = "en_AU.UTF-8";
-      LC_PAPER = "en_AU.UTF-8";
-      LC_TELEPHONE = "en_AU.UTF-8";
-      LC_TIME = "en_AU.UTF-8";
+      LC_ADDRESS = defaultLocale;
+      LC_IDENTIFICATION = defaultLocale;
+      LC_MEASUREMENT = defaultLocale;
+      LC_MONETARY = defaultLocale;
+      LC_NAME = defaultLocale;
+      LC_NUMERIC = defaultLocale;
+      LC_PAPER = defaultLocale;
+      LC_TELEPHONE = defaultLocale;
+      LC_TIME = defaultLocale;
     };
   };
 
-  services.xserver = {
-    enable = true;
-    xkb = {
-      layout = "au";
-      variant = "";
+  services = {
+    xserver = {
+      enable = true;
+      xkb = {
+        layout = "au";
+        variant = "";
+      };
+
+      displayManager.lightdm.enable = true;
+      desktopManager.xfce.enable = true;
+
+      excludePackages = [ pkgs.xterm ];
     };
 
-    displayManager.lightdm.enable = true;
-    desktopManager.xfce.enable = true;
+    printing.enable = true;
 
-    excludePackages = [ pkgs.xterm ];
+    pulseaudio.enable = false;
+
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+    };
+
+    gvfs = {
+      enable = true;
+      package = pkgs.gnome.gvfs;
+    };
+
+    redshift = {
+      enable = true;
+      brightness = {
+        # Note the string values below.
+        day = "1";
+        night = "1";
+      };
+      temperature = {
+        day = 6500;
+        night = 3800;
+      };
+    };
+
+    blueman.enable = true;
+
+    postgresql = {
+      enable = true;
+      package = pkgs.postgresql_15; 
+    };
   };
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
+  security = {
+    doas = {
+      enable = true;
+      extraRules = [ {
+        groups = [ "wheel" "plugdev" ];
+        persist = true;
+      } ];
+    };
 
-  # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  
-  security.doas = {
-    enable = true;
-    extraRules = [
-      { groups = [ "wheel" "plugdev" ]; persist = true; }
-    ];
+    rtkit.enable = true;
   };
-
-  environment.sessionVariables = {
-    DOAS_PROMPT = [ "\\x1b[42m  \\x1b[44m\\x1b[32m\\x1b[0m\\x1b[1m\\x1b[44m  [DOAS] Password \\x1b[0m\\x1b[34m\\x1b[0m " ];
-    DOAS_AUTH_FAIL_MSG = [ "Authentication Failed" ];
-  };
-
-  services.gvfs = {
-    enable = true;
-    package = pkgs.gnome.gvfs;
-  };
-
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   programs ={
     zsh.enable = true;
@@ -114,12 +116,13 @@ in
     users.inferno214221 = {
       isNormalUser = true;
       description = "Inferno214221";
-      extraGroups = [ "networkmanager" "wheel" "docker" "plugdev" "adbusers" ];
+      extraGroups = [ "networkmanager" "wheel" "docker" "plugdev" "adbusers" "postgres" ];
       packages = with pkgs; [];
     };
   };
 
   nixpkgs.config.allowUnfree = true;
+
   nix.settings = {
     auto-optimise-store = true;
     experimental-features = [ "nix-command" "flakes" ];
@@ -135,8 +138,6 @@ in
       xfce4-screenshooter
     ];
 
-    # List packages installed in system profile. To search, run:
-    # $ nix search wget
     systemPackages = (with pkgs; [
       pciutils
       lshw
@@ -162,6 +163,13 @@ in
       xfce4-pulseaudio-plugin
       xfce4-docklike-plugin
     ]);
+
+    sessionVariables = {
+      DOAS_PROMPT = [ "\\x1b[42m  \\x1b[44m\\x1b[32m\\x1b[0m\\x1b[1m\\x1b[44m  [DOAS] Password \\x1b[0m\\x1b[34m\\x1b[0m " ];
+      DOAS_AUTH_FAIL_MSG = [ "Authentication Failed" ];
+
+      PGDATA = "/var/lib/postgresql/data";
+    };
   };
 
   fonts = {
@@ -180,29 +188,16 @@ in
 
   location = secrets.location;
 
-  services.redshift = {
-    enable = true;
-    brightness = {
-      # Note the string values below.
-      day = "1";
-      night = "1";
+  virtualisation = {
+    docker = {
+      enable = true;
+      # setSocketVariable = true;
     };
-    temperature = {
-      day = 6500;
-      night = 3800;
+
+    podman = {
+      enable = true;
+      # dockerCompat = true;
     };
-  };
-
-  services.blueman.enable = true;
-
-  virtualisation.podman = {
-    enable = true;
-    # dockerCompat = true;
-  };
-
-  virtualisation.docker = {
-    enable = true;
-    # setSocketVariable = true;
   };
 
   # Some programs need SUID wrappers, can be configured further or are

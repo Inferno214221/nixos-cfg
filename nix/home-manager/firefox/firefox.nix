@@ -35,7 +35,6 @@
   programs.firefox = {
     enable = true;
     package = pkgs.wrapFirefox pkgs.firefox-esr-unwrapped {
-      # nixExtensions
       extraPolicies = {
         CaptivePortal = false;
         DisableFirefoxStudies = true;

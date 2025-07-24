@@ -12,46 +12,11 @@ in {
     ./work/work.nix
   ];
 
-  # TODO: Rename heaps of desktop entires:
-  # gedit -> Gedit
-  # Firefox ESR -> Firefox
-  # GNU Image Manipulation Program -> GIMP
-  # VSCodium - URL Handler -> VSCodium
-  # GitKraken Desktop -> GitKraken
-
   home = {
     username = "inferno214221";
     homeDirectory = "/home/inferno214221/";
 
     packages = (with pkgs; [ # Current, Standard Packages
-      # TODO: Fix Gedit theme
-      (gedit.overrideAttrs (old: let
-          program = "gedit";
-          desktopEntry = pkgs.makeDesktopItem {
-            desktopName = "Gedit";
-            name = program;
-            icon = program;
-            exec = "${program} %U";
-            mimeTypes = [
-              "text/plain" "application/x-zerosize"
-            ];
-            actions = {
-              new-window = {
-                name = "New Window";
-                exec = "${program} --new-window";
-              };
-              new-document = {
-                name = "New Document";
-                exec = "${program} --new-document";
-              };
-            };
-          };
-        in {
-        postInstall = ''
-          rm $out/share/applications/*
-          ln -s ${desktopEntry}/share/applications/${program}.desktop $out/share/applications/${program}.desktop
-        '';
-      }))
       nemo-with-extensions
       gitkraken
       shotwell
@@ -72,11 +37,9 @@ in {
       typst
       corefonts
       vistafonts
-      # chromium
       yt-dlp
       mp3gain
       pdftk
-      # android-studio
       baobab
       ffmpeg
       imagemagick
@@ -92,44 +55,9 @@ in {
       kdePackages.kdenlive # TODO: configure & theme
       obs-studio
       mine.timekeeper
+      old-gnome.nautilus
+      old-gnome.gedit
     ]) ++ (with pkgs.old.gnome; [ # Old Gnome Packages
-      (nautilus.overrideAttrs (prev: let
-          program = "org.gnome.Nautilus";
-          desktopEntry = pkgs.makeDesktopItem {
-            desktopName = "Nautilus";
-            name = program;
-            icon = "nautilus";
-            exec = "nautilus --new-window %U";
-            mimeTypes = [
-              "inode/directory" "application/x-7z-compressed" "application/x-7z-compressed-tar" "application/x-bzip" "application/x-bzip-compressed-tar" "application/x-compress" "application/x-compressed-tar" "application/x-cpio" "application/x-gzip" "application/x-lha" "application/x-lzip" "application/x-lzip-compressed-tar" "application/x-lzma" "application/x-lzma-compressed-tar" "application/x-tar" "application/x-tarz" "application/x-xar" "application/x-xz" "application/x-xz-compressed-tar" "application/zip" "application/gzip" "application/bzip2" "application/vnd.rar"
-            ];
-            actions = {
-              new-window = {
-                name = "New Window";
-                exec = "nautilus --new-window";
-              };
-            };
-          };
-        in {
-          preFixup = ''
-            gappsWrapperArgs+=(
-              # Add old version to GIO_EXTRA_MODULES to fix access to trash:// and other gvfs.
-              --prefix GIO_EXTRA_MODULES : "${pkgs.old.gnome.gvfs}/lib/gio/modules"
-
-              # Thumbnailers (Copied from 22.05 nautilus derivation).
-              --prefix XDG_DATA_DIRS : "${pkgs.old.gdk-pixbuf}/share"
-              --prefix XDG_DATA_DIRS : "${pkgs.old.librsvg}/share"
-
-              # Use new version to fix crash when encountering *.mjs files.
-              --prefix XDG_DATA_DIRS : "${pkgs.shared-mime-info}/share"
-            )
-          '';
-          
-          postInstall = ''
-            rm $out/share/applications/*
-            ln -s ${desktopEntry}/share/applications/${program}.desktop $out/share/applications/${program}.desktop
-          '';
-      }))
       evince
       file-roller
       gnome-system-monitor
@@ -328,7 +256,7 @@ in {
     desktopEntries = {
       launcher = {
         name = "Launcher";
-        icon = "${../distributor-logo-nixos.svg}";
+        icon = "distributor-logo-nixos";
         exec = "rofi -show drun -drun-exclude-categories XFCE,X-XFCE,X-XFCE-SettingsDialog,X-NixPkgGroup";
         noDisplay = true;
       };
