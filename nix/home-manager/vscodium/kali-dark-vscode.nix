@@ -9,8 +9,8 @@ pkgs.stdenv.mkDerivation {
   src = pkgs.fetchFromGitHub {
     owner = "inferno214221";
     repo = "kali-dark-vscode";
-    rev = "12fe4de59c127d109be0fc438694cea5bdc0d4c6";
-    sha256 = "sha256-KVsZR/eaHc5aXmZJF/WxRAV7g02gl3RDwTrwSjVVQSM=";
+    rev = "095b3e9d3260f614021fb6fb4c3ab068219672d0";
+    hash = "sha256-VU/HeS5s81/6vLdIj9zy+5xgOHwbFQ8fG2+mHloIgDg=";
   };
 
   dontDisableStatic = true;

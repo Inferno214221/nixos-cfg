@@ -23,8 +23,8 @@
       eamodio.gitlens # To Modify
       fwcd.kotlin
       ms-vscode.live-server
-      # jnoortheen.nix-ide
-      bbenoist.nix
+      jnoortheen.nix-ide
+      # bbenoist.nix
       jeanp413.open-remote-ssh
       # Pseudocode
       rust-lang.rust-analyzer
