@@ -24,6 +24,7 @@
 
     timekeeper.url = "github:inferno214221/timekeeper";
     simple-tab-groups.url = "github:inferno214221/simple-tab-groups";
+    kali-dark-vscode.url = "github:inferno214221/kali-dark-vscode";
   };
 
   outputs = {
@@ -36,7 +37,8 @@
     grub2-themes,
     # rust-overlay,
     timekeeper,
-    simple-tab-groups
+    simple-tab-groups,
+    kali-dark-vscode
   }:
   let
     system = "x86_64-linux";
@@ -58,7 +60,15 @@
     };
 
     overlay-sys-tweaks = final: prev: {
-      doas = prev.callPackage ./nixos/doas/doas.nix { inherit prev; };
+      # doas = prev.callPackage ./nixos/doas/doas.nix { inherit prev; };
+      doas = prev.doas.overrideAttrs (old: {
+        src = prev.fetchFromGitHub {
+          owner = "inferno214221";
+          repo = "opendoas-custom-prompt";
+          rev = "88b914170f7cc8fb1869b6d925d31f17a5691286";
+          hash = "sha256-j14OZrI1lAuTP/Zl+6GugEjQPBycRxoyVXOCWfGYAKw=";
+        };
+      });
       blueman = prev.blueman.overrideAttrs (old: {
         postInstall = ''
           sed -i -e "s/Categories=/Categories=X-XFCE;X-XFCE-SettingsDialog;/g" $out/share/applications/blueman-manager.desktop
@@ -93,6 +103,7 @@
       mine = {
         timekeeper = timekeeper.packages."${system}".default;
         simple-tab-groups = simple-tab-groups.packages."${system}".default;
+        kali-dark-vscode = kali-dark-vscode.packages."${system}".default;
       };
     };
   in {

@@ -24,7 +24,6 @@
       fwcd.kotlin
       ms-vscode.live-server
       jnoortheen.nix-ide
-      # bbenoist.nix
       jeanp413.open-remote-ssh
       # Pseudocode
       rust-lang.rust-analyzer
@@ -36,8 +35,8 @@
       # redhat.java
       ms-python.python
       # redhat.vscode-xml
-    ] ++ [
-      (pkgs.callPackage ./kali-dark-vscode.nix { inherit pkgs; })
+    ] ++ (with pkgs; [
+      mine.kali-dark-vscode
       (pkgs.vscode-utils.buildVscodeExtension {
         name = "markdown-editor";
         pname = "markdown-editor";
@@ -48,12 +47,12 @@
         #   owner = "inferno214221";
         #   repo = "vscode-markdown-editor";
         #   rev = "20e7109dd5ae07e615a3747bc886572342616bb3";
-        #   sha256 = "sha256-3huvD5URp+/6Ax1DIs4C94ce10u6nTQQpmJ2s6SsNdE=";
+        #   hash = "sha256-3huvD5URp+/6Ax1DIs4C94ce10u6nTQQpmJ2s6SsNdE=";
         # };
         vscodeExtPublisher = "zaaack";
         vscodeExtName = "markdown-editor";
         vscodeExtUniqueId = "zaaack.markdown-editor";
       })
-    ]);
+    ]));
   };
 }
