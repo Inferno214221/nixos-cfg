@@ -2,14 +2,14 @@
   mkPkgGroup = import ../util/pkg-group.nix { inherit pkgs lib; };
 in {
   imports = [
-    ./firefox/firefox.nix
-    ./gimp/gimp.nix
-    ./rofi/rofi.nix
-    ./screenshots/screenshots.nix
-    ./vscodium/vscodium.nix
-    ./xfce/xfce.nix
+    ./firefox
+    ./gimp
+    ./rofi
+    ./screenshots
+    ./vscodium
+    ./xfce
     ./shell
-    ./work/work.nix
+    ./work
   ];
 
   home = {
@@ -180,7 +180,7 @@ in {
 
     theme = {
       name = "Kali-Dark";
-      package = import ./kali-dark/kali-dark-theme.nix { inherit pkgs; };
+      package = import ./kali-dark { inherit pkgs; };
     };
 
     iconTheme = {
