@@ -142,11 +142,7 @@ in
       pciutils
       lshw
       wget
-      tldr
-      tree
-      killall
       home-manager
-      fastfetch
       dos2unix
       glibc
       btrfs-progs

@@ -8,7 +8,7 @@ in {
     ./screenshots/screenshots.nix
     ./vscodium/vscodium.nix
     ./xfce/xfce.nix
-    ./zsh/zsh.nix
+    ./shell
     ./work/work.nix
   ];
 
@@ -22,9 +22,8 @@ in {
       shotwell
       xcape
       discord
-      # # sayonara
-      # # thunderbird
-      curl
+      # sayonara
+      # thunderbird
       # betterdiscordctl
       vlc # TODO: qt5ct
       xmousepasteblock
@@ -32,20 +31,10 @@ in {
       xorg.xkill
       xcape
       galculator # TODO: stick window above
-      pandoc
-      texlive.combined.scheme-small
-      typst
       corefonts
       vistafonts
-      yt-dlp
-      mp3gain
-      pdftk
       baobab
-      ffmpeg
-      imagemagick
-      nix-tree
       youtube-music
-      units
       jetbrains.idea-community-src # TODO: configure theme, keybinds, extensions, etc...
       android-studio
       libreoffice # TODO: compact theme, papirus icons, keybinds
@@ -127,29 +116,6 @@ in {
       };
     };
 
-    shellAliases = {
-      # "snix" = "sudo nixos-rebuild switch --flake /home/inferno214221/config/#nixos";
-      # "tnix" = "sudo nixos-rebuild test --flake /home/inferno214221/config/#nixos";
-      # "hix" = "home-manager switch --flake \"/home/inferno214221/config/?submodules=1#inferno214221\"";
-      "snix" = "nh os switch path:/home/inferno214221/config/nix";
-      "tnix" = "nh os test path:/home/inferno214221/config/nix";
-      "hix" = "nh home switch path:/home/inferno214221/config/nix";
-      "clix" = "nh clean all --nogcroots";
-      "clix-all" = "nh clean all";
-      "nup" = "nix flake update --flake path:/home/inferno214221/config/nix";
-      "nsh" = "nix-shell --command zsh -p";
-
-      "ll" = "ls -l";
-      "la" = "ls -a";
-      "bat" = "echo \"$(cat /sys/class/power_supply/BAT1/capacity)%\"";
-      "sudo" = "doas";
-      "loc" = "git ls-files | grep -v -E \"^\\..*\" | grep -E \".*\\.(jsx?|tsx?|html|css?|cc?|java|sh|py|rs)\" | xargs wc -l";
-      "yt-dlp-mp3" = "yt-dlp -x --audio-format mp3";
-      "mp3gain-all" = "find . -type f -name \"*.mp3\" -exec mp3gain -r \{\} +";
-      "edit-hist" = "gedit ~/.zsh_history";
-      "units" = "units -1 --compact";
-    };
-
     # sessionVariables = {
     # };
 
@@ -171,11 +137,6 @@ in {
   };
 
   programs = {
-    bash = {
-      enable = true;
-      historyControl = [ "ignoredups" ];
-    };
-
     git = {
       enable = true;
       userName = "Inferno214221";
