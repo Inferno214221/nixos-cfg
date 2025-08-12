@@ -135,7 +135,9 @@ in {
       "tnix" = "nh os test path:/home/inferno214221/config/nix";
       "hix" = "nh home switch path:/home/inferno214221/config/nix";
       "clix" = "nh clean all --nogcroots";
+      "clix-all" = "nh clean all";
       "nup" = "nix flake update --flake path:/home/inferno214221/config/nix";
+      "nsh" = "nix-shell --command zsh -p";
 
       "ll" = "ls -l";
       "la" = "ls -a";
