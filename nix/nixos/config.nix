@@ -116,7 +116,7 @@ in
     users.inferno214221 = {
       isNormalUser = true;
       description = "Inferno214221";
-      extraGroups = [ "networkmanager" "wheel" "docker" "plugdev" "adbusers" "postgres" ];
+      extraGroups = [ "networkmanager" "wheel" "docker" "plugdev" "adbusers" "postgres" "vboxusers" ];
       packages = with pkgs; [];
     };
   };
@@ -197,6 +197,10 @@ in
     podman = {
       enable = true;
       # dockerCompat = true;
+    };
+
+    virtualbox.host = {
+      enable = true;
     };
   };
 

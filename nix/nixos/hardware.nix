@@ -59,6 +59,9 @@
     };
 
     supportedFilesystems = [ "ntfs" ];
+
+    # VirtualBox fix
+    kernelParams = [ "kvm.enable_virt_at_load=0" ];
   };
 
   fileSystems = {
