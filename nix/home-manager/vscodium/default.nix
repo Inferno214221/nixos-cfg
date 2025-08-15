@@ -10,7 +10,6 @@
     profiles.default.extensions = (with pkgs.open-vsx; [
       streetsidesoftware.code-spell-checker-australian-english
       edwinhuish.better-comments-next
-      # bungcip.better-toml
       tamasfe.even-better-toml
       uloco.theme-bluloco-dark
       alefragnani.bookmarks
@@ -31,6 +30,7 @@
       vscode-icons-team.vscode-icons
       dotjoshjohnson.xml
       mkhl.direnv
+      myriad-dreamin.tinymist
     ]) ++ (with pkgs.vscode-marketplace; [
       # redhat.java
       ms-python.python

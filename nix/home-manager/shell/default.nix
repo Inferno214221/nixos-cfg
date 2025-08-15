@@ -43,13 +43,13 @@
       "sudo" = "doas";
       "su" = "su -c zsh";
       "cd" = "z";
-      "ls" = "eza -l --no-user --no-time --hyperlink";
+      "ls" = "eza -l --no-user --no-time --sort=type --hyperlink";
       "ls-full" = "eza -l --time-style=relative --smart-group";
-      "tree" = "eza -l --no-user --no-time --total-size -T -L";
+      "tree" = "eza -l --no-user --no-time --sort=type --total-size --git-ignore -T -L";
       "cat" = "bat";
-      "find" = "fd";
+      # "find" = "fd";
       "grep" = "rg";
-      "sed" = "sd";
+      # "sed" = "sd";
       "diff" = "delta --file-style white --hunk-header-style omit";
       "fetch" = "fastfetch";
       # less
