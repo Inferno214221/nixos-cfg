@@ -93,9 +93,9 @@
         fi
 
         if zmodload zsh/terminfo && (( terminfo[colors] >= 256 )); then
-          [[ ! -f ${./p10k.zsh} ]] || source ${./p10k.zsh}
+          [[ ! -f ${./p10k/p10k.zsh} ]] || source ${./p10k/p10k.zsh}
         else
-          [[ ! -f ${./p10k.tty.zsh} ]] || source ${./p10k.tty.zsh}
+          [[ ! -f ${./p10k/p10k.tty.zsh} ]] || source ${./p10k/p10k.tty.zsh}
         fi
       '';
     };
