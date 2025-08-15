@@ -31,13 +31,13 @@
       # "snix" = "sudo nixos-rebuild switch --flake /home/inferno214221/config/#nixos";
       # "tnix" = "sudo nixos-rebuild test --flake /home/inferno214221/config/#nixos";
       # "hix" = "home-manager switch --flake \"/home/inferno214221/config/?submodules=1#inferno214221\"";
-      "snix" = "nh os switch path:/home/inferno214221/config/nix";
-      "tnix" = "nh os test path:/home/inferno214221/config/nix";
-      "hix" = "nh home switch path:/home/inferno214221/config/nix";
+      "snix" = "nh os switch path:/home/inferno214221/config";
+      "tnix" = "nh os test path:/home/inferno214221/config";
+      "hix" = "nh home switch path:/home/inferno214221/config";
       "clix" = "nh clean all --nogcroots";
       "clix-all" = "nh clean all";
-      "nup" = "nix flake update --flake path:/home/inferno214221/config/nix";
-      "nsh" = "nix-shell -p"; #  --command zsh
+      "nup" = "nix flake update --flake path:/home/inferno214221/config";
+      "nsh" = "nix-shell -p"; # --command zsh
 
       # I use aliases here so that I don't break my workflow if I switch environment.
       "sudo" = "doas";

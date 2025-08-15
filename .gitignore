@@ -1,4 +1,4 @@
-nix/secrets.nix
-nix/home-manager/better-discord/
+secrets.nix
+home-manager/better-discord/
 
-nix/home-manager/work/
+home-manager/work/
