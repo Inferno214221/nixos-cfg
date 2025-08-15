@@ -12,15 +12,15 @@
   boot = {
     initrd = {
       availableKernelModules = [ "xhci_pci" "thunderbolt" "vmd" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
-      kernelModules = [ ];
+      kernelModules = [];
     };
 
     kernelModules = [ "kvm-intel" ];
-    extraModulePackages = [ ];
+    extraModulePackages = [];
 
     loader = {
       efi.canTouchEfiVariables = true;
-      # systemd-boot.enable = true;
+      
       grub = {
         enable = true;
         device = "nodev";
@@ -47,7 +47,7 @@
         theme = "stylish";
         footer = true;
         customResolution = "1920x1080";
-        splashImage = ../home-manager/pictures/bg0.png;
+        splashImage = ../../../home/desktop/pictures/bg0.png;
       };
     };
 

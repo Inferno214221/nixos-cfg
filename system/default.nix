@@ -4,12 +4,11 @@ let
 in
 {
   imports = [
-    ./hardware.nix
+    ./hosts/laptop
   ];
 
   networking = {
     hostName = "nixos";
-
     networkmanager.enable = true;
   };
 
