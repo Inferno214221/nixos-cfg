@@ -13,9 +13,8 @@
         "type": "github"
       },
       "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
+        "id": "flake-utils",
+        "type": "indirect"
       }
     },
     "flake-utils_2": {
@@ -72,6 +71,24 @@
         "type": "github"
       }
     },
+    "flake-utils_5": {
+      "inputs": {
+        "systems": "systems_5"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "grub2-themes": {
       "inputs": {
         "nixpkgs": "nixpkgs"
@@ -113,7 +130,7 @@
     },
     "kali-dark-vscode": {
       "inputs": {
-        "flake-utils": "flake-utils",
+        "flake-utils": "flake-utils_2",
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
@@ -130,9 +147,31 @@
         "type": "github"
       }
     },
+    "mine": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "kali-dark-vscode": "kali-dark-vscode",
+        "nixpkgs": "nixpkgs_3",
+        "simple-tab-groups": "simple-tab-groups",
+        "timekeeper": "timekeeper"
+      },
+      "locked": {
+        "lastModified": 1755265268,
+        "narHash": "sha256-15hOsPnEbKoPJ5WGUDEXEXtmOl5mtAsNUxMT0k8lKXw=",
+        "owner": "inferno214221",
+        "repo": "my-pkgs",
+        "rev": "8406f4fc13a3df12802cfc2608e26df501dc9bb4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "inferno214221",
+        "repo": "my-pkgs",
+        "type": "github"
+      }
+    },
     "nix-vscode-extensions": {
       "inputs": {
-        "flake-utils": "flake-utils_2",
+        "flake-utils": "flake-utils_5",
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -214,16 +253,15 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1754767907,
-        "narHash": "sha256-8OnUzRQZkqtUol9vuUuQC30hzpMreKptNyET2T9lB6g=",
+        "lastModified": 1755175540,
+        "narHash": "sha256-V0j2S1r25QnbqBLzN2Rg/dKKil789bI3P3id7bDPVc4=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "c5f08b62ed75415439d48152c2a784e36909b1bc",
+        "rev": "a595dde4d0d31606e19dcec73db02279db59d201",
         "type": "github"
       },
       "original": {
         "id": "nixpkgs",
-        "ref": "nixos-25.05",
         "type": "indirect"
       }
     },
@@ -273,17 +311,30 @@
         "type": "github"
       }
     },
+    "nixpkgs_7": {
+      "locked": {
+        "lastModified": 1754767907,
+        "narHash": "sha256-8OnUzRQZkqtUol9vuUuQC30hzpMreKptNyET2T9lB6g=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "c5f08b62ed75415439d48152c2a784e36909b1bc",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "ref": "nixos-25.05",
+        "type": "indirect"
+      }
+    },
     "root": {
       "inputs": {
         "grub2-themes": "grub2-themes",
         "home-manager": "home-manager",
-        "kali-dark-vscode": "kali-dark-vscode",
+        "mine": "mine",
         "nix-vscode-extensions": "nix-vscode-extensions",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_7",
         "nixpkgs-old": "nixpkgs-old",
-        "nixpkgs-unstable": "nixpkgs-unstable",
-        "simple-tab-groups": "simple-tab-groups",
-        "timekeeper": "timekeeper"
+        "nixpkgs-unstable": "nixpkgs-unstable"
       }
     },
     "rust-overlay": {
@@ -369,6 +420,21 @@
       }
     },
     "systems_4": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_5": {
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
