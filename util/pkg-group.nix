@@ -1,5 +1,5 @@
 { pkgs, lib }:
-({
+{
   name,
   icon ? null,
   packages,
@@ -44,4 +44,4 @@ in pkgs.symlinkJoin {
       categories = [ "X-NixPkgGroup" ];
     })
   ];
-})
+}

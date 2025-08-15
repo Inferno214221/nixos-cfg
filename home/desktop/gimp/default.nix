@@ -1,13 +1,13 @@
 { inputs, lib, config, pkgs, ... }:
 {
   home = {
-    packages = (with pkgs; [
+    packages = with pkgs; [
       gimp-with-plugins
       # gimpPlugins.gap
       gimpPlugins.gmic
       gimpPlugins.bimp
       gimpPlugins.resynthesizer
-    ]);
+    ];
     
     file = {
       splash = {

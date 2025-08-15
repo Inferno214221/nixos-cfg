@@ -1,7 +1,7 @@
 { inputs, lib, config, pkgs, ... }:
 {
   home = {
-    packages = (with pkgs; [
+    packages = with pkgs; [
       maim
       tesseract
       xclip
@@ -46,6 +46,6 @@
         tesseract - - |
         xclip -selection c
       '')
-    ]);
+    ];
   };
 }
