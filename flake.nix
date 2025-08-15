@@ -188,7 +188,7 @@
             overlay-versions
             overlay-sys-tweaks
           ]; })
-          ./nixos/config.nix
+          ./system
           grub2-themes.nixosModules.default
         ];
       };
@@ -204,7 +204,7 @@
             # rust-overlay.overlays.default
             overlay-my-pkgs
           ]; })
-          ./home-manager/home.nix
+          ./home
         ];
       };
     };
