@@ -155,7 +155,7 @@ in {
 
     theme = {
       name = "Kali-Dark";
-      package = import ./kali-dark { inherit pkgs; };
+      package = import ../../pkgs/kali-dark { inherit pkgs; };
     };
 
     iconTheme = {
