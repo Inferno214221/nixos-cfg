@@ -50,11 +50,11 @@
       # "find" = "fd";
       "grep" = "rg";
       # "sed" = "sd";
-      "diff" = "delta --file-style white --hunk-header-style omit";
+      "delta" = "delta --file-style white --hunk-header-style omit";
       "fetch" = "fastfetch";
       # less
       # nano
-      "reset-cmds" = "unalias sudo su cd ls tree cat find grep sed diff fetch";
+      "reset-cmds" = "unalias sudo su cd ls tree cat grep fetch";
 
       "battery" = "echo \"$(cat /sys/class/power_supply/BAT1/capacity)%\"";
       "loc" = "git ls-files | grep -v -E \"^\\..*\" | grep -E \".*\\.(jsx?|tsx?|html|css?|cc?|java|sh|py|rs)\" | xargs wc -l";
@@ -84,7 +84,19 @@
       } ];
 
       # https://github.com/NixOS/nixpkgs/issues/154696
-      initContent = ''
+      initContent = let 
+        patchedP10k = "${pkgs.stdenv.mkDerivation {
+          name = "p10k-cfg-tty";
+          version = "0.0.1";
+          src = ./p10k;
+          patches = [ ./p10k/tty.patch ];
+          phases = [ "unpackPhase" "patchPhase" "buildPhase" ];
+          buildPhase = ''
+            mkdir -p $out/share
+            cp p10k.zsh $out/share/p10k.tty.zsh
+          '';
+        }}/share/p10k.tty.zsh";
+      in ''
         # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
         # Initialization code that may require console input (password prompts, [y/n]
         # confirmations, etc.) must go above this block; everything else may go below.
@@ -95,7 +107,7 @@
         if zmodload zsh/terminfo && (( terminfo[colors] >= 256 )); then
           [[ ! -f ${./p10k/p10k.zsh} ]] || source ${./p10k/p10k.zsh}
         else
-          [[ ! -f ${./p10k/p10k.tty.zsh} ]] || source ${./p10k/p10k.tty.zsh}
+          [[ ! -f ${patchedP10k} ]] || source ${patchedP10k}
         fi
       '';
     };
