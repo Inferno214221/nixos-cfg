@@ -112,16 +112,6 @@ in {
   };
 
   programs = {
-    git = {
-      enable = true;
-      userName = "Inferno214221";
-      userEmail = "inferno214221@gmail.com";
-      extraConfig = {
-        init.defaultBranch = "main";
-      };
-      lfs.enable = true;
-    };
-
     terminator = {
       enable = true;
       config = {

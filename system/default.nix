@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 let
-  secrets = (import ../secrets.nix) {};
+  location = (import ./location.nix) {};
 in
 {
   imports = [
@@ -12,7 +12,7 @@ in
     networkmanager.enable = true;
   };
 
-  time.timeZone = "Australia/Adelaide";
+  time.timeZone = location.timeZone;
 
   i18n = rec {
     defaultLocale = "en_AU.UTF-8";
@@ -181,7 +181,7 @@ in
     zsa.enable = true;
   };
 
-  location = secrets.location;
+  location = location.coords;
 
   virtualisation = {
     docker = {
