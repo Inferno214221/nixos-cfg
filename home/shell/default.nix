@@ -39,7 +39,7 @@
       "tnix" = "nh os test path:/home/inferno214221/config";
       "hix" = "nh home switch path:/home/inferno214221/config";
       "clix" = "nh clean all --nogcroots";
-      "clix-all" = "nh clean all";
+      "clax" = "nh clean all";
       "nup" = "nix flake update --flake path:/home/inferno214221/config";
       "nsh" = "nix-shell -p"; # --command zsh
 
