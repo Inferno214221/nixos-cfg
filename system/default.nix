@@ -38,7 +38,43 @@ in
         variant = "";
       };
 
-      displayManager.lightdm.enable = true;
+      displayManager.lightdm = {
+        enable = true;
+        greeters.gtk = {
+          enable = true;
+
+          theme = {
+            name = "Kali-Dark";
+            package = import ../pkgs/kali-dark { inherit pkgs; };
+          };
+
+          iconTheme = {
+            name = "Papirus-Dark";
+            package = pkgs.papirus-icon-theme;
+          };
+
+          cursorTheme = {
+            name = "Yaru-dark";
+            package = pkgs.yaru-theme;
+          };
+
+          indicators = [
+            "~host"
+            "~spacer"
+            "~clock"
+            "~spacer"
+            "~session"
+            "~power"
+          ];
+
+          clock-format = "%a %d %b, %I:%M %p";
+
+          extraConfig = ''
+            font-name = Ubuntu 11
+            default-user-image = ${../home/desktop/pictures/pfp.png}
+          '';
+        };
+      };
       desktopManager.xfce.enable = true;
 
       excludePackages = [ pkgs.xterm ];
@@ -115,7 +151,7 @@ in
     users.inferno214221 = {
       isNormalUser = true;
       description = "Inferno214221";
-      extraGroups = [ "networkmanager" "wheel" "docker" "plugdev" "adbusers" "postgres" "vboxusers" ];
+      extraGroups = [ "networkmanager" "wheel" "docker" "plugdev" "adbusers" "postgres" "vboxusers" "dialout" ];
       packages = with pkgs; [];
     };
   };

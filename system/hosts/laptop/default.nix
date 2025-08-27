@@ -13,6 +13,9 @@
     initrd = {
       availableKernelModules = [ "xhci_pci" "thunderbolt" "vmd" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
       kernelModules = [];
+      # Start Plymouth Earlier
+      systemd.enable = true;
+      verbose = false;
     };
 
     kernelModules = [ "kvm-intel" ];
@@ -53,8 +56,19 @@
 
     supportedFilesystems = [ "ntfs" ];
 
-    # VirtualBox fix
-    kernelParams = [ "kvm.enable_virt_at_load=0" ];
+    plymouth.enable = true;
+
+    consoleLogLevel = 3;
+    kernelParams = [
+      # Reduce Messages For Plymouth
+      "quiet"
+      "splash"
+      "boot.shell_on_fail"
+      "udev.log_priority=3"
+      "rd.systemd.show_status=auto"
+      # VirtualBox Fix
+      "kvm.enable_virt_at_load=0"
+    ];
   };
 
   fileSystems = {

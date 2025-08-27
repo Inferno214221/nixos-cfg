@@ -16,9 +16,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    grub2-themes = {
-      url = "github:vinceliuice/grub2-themes";
-    };
+    grub2-themes.url = "github:vinceliuice/grub2-themes";
 
     mine.url = "github:inferno214221/my-pkgs";
   };
