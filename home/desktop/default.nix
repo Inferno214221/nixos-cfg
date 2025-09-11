@@ -33,7 +33,7 @@ in {
       libreoffice # TODO: compact theme, papirus icons, keybinds
       chromium
       inkscape # TODO: switch to default theme, add as svg default
-      pinta
+      drawing
       kdePackages.kdenlive # TODO: configure & theme
       obs-studio
       mine.timekeeper

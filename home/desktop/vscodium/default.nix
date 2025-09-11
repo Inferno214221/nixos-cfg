@@ -24,8 +24,7 @@
       ms-vscode.live-server
       jnoortheen.nix-ide
       jeanp413.open-remote-ssh
-      # Pseudocode
-      rust-lang.rust-analyzer
+      # rust-lang.rust-analyzer
       gruntfuggly.todo-tree
       vscode-icons-team.vscode-icons
       dotjoshjohnson.xml
@@ -37,6 +36,8 @@
       # redhat.vscode-xml
     ] ++ (with pkgs; [
       mine.kali-dark-vscode
+      # fenix version of rust-analyzer
+      vscode-extensions.rust-lang.rust-analyzer-nightly
       (pkgs.vscode-utils.buildVscodeExtension {
         name = "markdown-editor";
         pname = "markdown-editor";

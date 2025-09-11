@@ -16,6 +16,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    fenix = {
+      url = "github:nix-community/fenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     grub2-themes.url = "github:vinceliuice/grub2-themes";
 
     mine.url = "github:inferno214221/my-pkgs";
@@ -28,6 +33,7 @@
     nixpkgs-unstable,
     nix-vscode-extensions,
     home-manager,
+    fenix,
     grub2-themes,
     mine
   }:
@@ -83,6 +89,7 @@
             overlay-old-gnome
             overlay-pkg-tweaks
             nix-vscode-extensions.overlays.default
+            fenix.overlays.default
           ]; })
           ./home
         ];

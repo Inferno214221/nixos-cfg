@@ -31,6 +31,10 @@
       typst
     ];
 
+    sessionVariables = {
+      TYPST_FONT_PATHS = "$HOME/.nix-profile/share/fonts/truetype/";
+    };
+
     shellAliases = {
       # "snix" = "sudo nixos-rebuild switch --flake /home/inferno214221/config/#nixos";
       # "tnix" = "sudo nixos-rebuild test --flake /home/inferno214221/config/#nixos";
@@ -52,7 +56,7 @@
       "tree" = "eza -l --no-user --no-time --sort=type --total-size --git-ignore -T -L";
       "cat" = "bat";
       # "find" = "fd";
-      "grep" = "rg";
+      # "grep" = "rg";
       # "sed" = "sd";
       "delta" = "delta --file-style white --hunk-header-style omit";
       "fetch" = "fastfetch";
