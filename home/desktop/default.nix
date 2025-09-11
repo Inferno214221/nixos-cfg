@@ -12,7 +12,6 @@ in {
 
   home = {
     packages = (with pkgs; [ # Current, Standard Packages
-      nemo-with-extensions
       gitkraken
       shotwell
       xcape
@@ -99,6 +98,16 @@ in {
         '';
         target = ".config/autostart/xmodmap.desktop";
       };
+
+      kill-thunar = {
+        enable = true;
+        text = ''
+          [Desktop Entry]
+          Name=kill-thunar
+          Exec=thunar -q
+        '';
+        target = ".config/autostart/kill-thunar.desktop";
+      };
     };
 
     # sessionVariables = {};
@@ -161,6 +170,11 @@ in {
     font = {
       name = "Ubuntu";
       package = pkgs.ubuntu_font_family;
+    };
+
+    gtk3.extraConfig = {
+      gtk-shell-shows-desktop = 0;
+      gtk-error-bell = false;
     };
   };
 
