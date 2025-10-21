@@ -24,12 +24,12 @@
       target = ".mozilla/firefox/g9bnymtb.default/firefox-new-tab";
     };
 
-    simple-tab-groups-tweak = {
-      enable = true;
-      source = "${pkgs.mine.simple-tab-groups}/simple-tab-groups@drive4ik.xpi";
-      target = ".mozilla/firefox/g9bnymtb.default/extensions/simple-tab-groups@drive4ik.xpi";
-      force = true;
-    };
+    # simple-tab-groups-tweak = {
+    #   enable = true;
+    #   source = "${pkgs.mine.simple-tab-groups}/simple-tab-groups@drive4ik.xpi";
+    #   target = ".mozilla/firefox/g9bnymtb.default/extensions/simple-tab-groups@drive4ik.xpi";
+    #   force = true;
+    # };
   };
 
   programs.firefox = {

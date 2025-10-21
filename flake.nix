@@ -56,6 +56,7 @@
       unstable = import nixpkgs-unstable {
         inherit system;
         config.allowUnfree = true;
+        overlays = [ nix-vscode-extensions.overlays.default ];
       };
 
       mine = mine.packages."${system}";

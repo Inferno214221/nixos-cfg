@@ -16,18 +16,18 @@
       kb-row-select = "";
       kb-cancel = "Control+space,Escape,Control+Shift+Alt+Super+space";/*,Super*/
     };
-    package = pkgs.unstable.rofi-unwrapped.overrideAttrs (old: rec {
-      # Use development version which supports '-drun-exclude-categories' flag.
-      src = pkgs.fetchFromGitHub {
-        owner = "davatorium";
-        repo = "rofi";
-        rev = "0187d838946301e36dfadb7c6c000f68d1aec6de";
-        fetchSubmodules = true;
-        hash = "sha256-VtG9B1YOHRsiNKO4ysAWMIpEDWaA5H2fk79WWE315RI=";
-      };
-      postInstall = ''
-        rm $out/share/applications/*
-      '';
-    });
+    # package = pkgs.unstable.rofi-unwrapped.overrideAttrs (old: rec {
+    #   # Use development version which supports '-drun-exclude-categories' flag.
+    #   src = pkgs.fetchFromGitHub {
+    #     owner = "davatorium";
+    #     repo = "rofi";
+    #     rev = "0187d838946301e36dfadb7c6c000f68d1aec6de";
+    #     fetchSubmodules = true;
+    #     hash = "sha256-VtG9B1YOHRsiNKO4ysAWMIpEDWaA5H2fk79WWE315RI=";
+    #   };
+    #   postInstall = ''
+    #     rm $out/share/applications/*
+    #   '';
+    # });
   };
 }
