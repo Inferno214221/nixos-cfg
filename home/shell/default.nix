@@ -10,6 +10,7 @@
       tree
       killall
       units
+      file
 
       tldr
       fastfetch
@@ -84,6 +85,18 @@
         source = ./keys/github_personal.pub;
         target = ".ssh/github_personal.pub";
       };
+
+      server-ssh-key = {
+        enable = true;
+        source = ./keys/id_ed25519;
+        target = ".ssh/id_ed25519";
+      };
+
+      server-ssh-key-pub = {
+        enable = true;
+        source = ./keys/id_ed25519.pub;
+        target = ".ssh/id_ed25519.pub";
+      };
     };
 
     activation.importGpgKey = lib.hm.dag.entryAfter ["writeBoundary"] ''
@@ -116,6 +129,7 @@
 
     ssh = {
       enable = true;
+      addKeysToAgent = "yes";
       
       extraConfig = ''
         Host github.com
