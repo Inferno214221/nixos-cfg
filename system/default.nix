@@ -115,9 +115,13 @@ in
       enable = true;
       package = pkgs.postgresql_15; 
     };
+
+    gnome.gnome-keyring.enable = true;
   };
 
   security = {
+    pam.services.lightdm.enableGnomeKeyring = true;
+
     doas = {
       enable = true;
       extraRules = [ {

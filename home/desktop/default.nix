@@ -37,6 +37,7 @@ in {
       kdePackages.kdenlive # TODO: configure & theme
       obs-studio
       cinny-desktop
+      element-desktop
       mine.timekeeper
       old-gnome.nautilus
       old-gnome.gedit
