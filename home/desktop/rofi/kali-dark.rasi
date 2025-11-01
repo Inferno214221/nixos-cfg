@@ -13,14 +13,14 @@ configuration {
     icon-theme: "Papirus-Dark";
 }
 window {
-    /*
     anchor: northeast;
     location: northeast;
-    width: calc(100% - 38px);
-    */
+    width: calc(100% - 30px);
+    /*
     anchor: north;
     location: north;
     width: 100%;
+    */
     height: 32px;
     children: [ horibox ];
     border: 0px;
