@@ -30,6 +30,8 @@
       pandoc
       texlive.combined.scheme-small
       typst
+
+      caligula
     ];
 
     sessionVariables = {
@@ -71,6 +73,7 @@
       "mp3gain-all" = "find . -type f -name \"*.mp3\" -exec mp3gain -r \{\} +";
       "edit-hist" = "gedit ~/.zsh_history";
       "units" = "units -1 --compact";
+      "hgrep" = "history | grep";
     };
 
     file = {
@@ -153,6 +156,8 @@
       git = true;
       colors = "always";
       icons = "always";
+      # Remove extra aliases.
+      enableZshIntegration = false;
     };
 
     bat.enable = true;
