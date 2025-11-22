@@ -200,7 +200,7 @@ in
     ]);
 
     sessionVariables = {
-      DOAS_PROMPT = [ "\\x1b[42m  \\x1b[44m\\x1b[32m\\x1b[0m\\x1b[1m\\x1b[44m  [DOAS] Password \\x1b[0m\\x1b[34m\\x1b[0m " ];
+      DOAS_PROMPT = [ "\\x1b[42m  \\x1b[44m\\x1b[32m\\x1b[0m\\x1b[1m\\x1b[44m  [DOAS] Password \\x1b[0m\\x1b[34m\\x1b[0m " ];
       DOAS_AUTH_FAIL_MSG = [ "Authentication Failed" ];
 
       PGDATA = "/var/lib/postgresql/data";

@@ -33,6 +33,7 @@
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
     # os_icon                 # os identifier
+    nix_shell
     vcs                     # git status
     dir                     # current directory
     # =========================[ Line #2 ]=========================
@@ -93,7 +94,7 @@
     xplr                    # xplr shell (https://github.com/sayanarijit/xplr)
     vim_shell               # vim shell indicator (:sh)
     midnight_commander      # midnight commander shell (https://midnight-commander.org/)
-    nix_shell               # nix shell (https://nixos.org/nixos/nix-pills/developing-with-nix-shell.html)
+    # nix_shell               # nix shell (https://nixos.org/nixos/nix-pills/developing-with-nix-shell.html)
     # vi_mode               # vi mode (you don't need this if you've enabled prompt_char)
     # vpn_ip                # virtual private network indicator
     # load                  # CPU load
@@ -775,7 +776,7 @@
   #[ nix_shell: nix shell (https://nixos.org/nixos/nix-pills/developing-with-nix-shell.html) ]##
   # Nix shell color.
   typeset -g POWERLEVEL9K_NIX_SHELL_FOREGROUND=4
-  typeset -g POWERLEVEL9K_NIX_SHELL_BACKGROUND=6
+  typeset -g POWERLEVEL9K_NIX_SHELL_BACKGROUND=14
 
   # Tip: If you want to see just the icon without "pure" and "impure", uncomment the next line.
   typeset -g POWERLEVEL9K_NIX_SHELL_CONTENT_EXPANSION=
