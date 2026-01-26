@@ -29,6 +29,7 @@ in {
       baobab
       youtube-music
       jetbrains.idea-community-src # TODO: configure theme, keybinds, extensions, etc...
+      jetbrains.datagrip
       android-studio
       libreoffice # TODO: compact theme, papirus icons, keybinds
       chromium
@@ -38,6 +39,8 @@ in {
       obs-studio
       cinny-desktop
       element-desktop
+      keymapp
+      qmk
       mine.timekeeper
       old-gnome.nautilus
       old-gnome.gedit

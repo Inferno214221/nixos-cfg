@@ -24,7 +24,8 @@ with pkgs.unstable; {
       jeanp413.open-remote-ssh
       gruntfuggly.todo-tree
       vscode-icons-team.vscode-icons # Temporarily Broken
-      dotjoshjohnson.xml
+      # dotjoshjohnson.xml
+      redhat.vscode-xml
       mkhl.direnv
       myriad-dreamin.tinymist
     ]) ++ (with vscode-marketplace; [
@@ -39,9 +40,9 @@ with pkgs.unstable; {
       mine.kali-dark-vscode
       # fenix version of rust-analyzer
       vscode-extensions.rust-lang.rust-analyzer-nightly
-      (vscode-utils.buildVscodeExtension {
+      (vscode-utils.buildVscodeExtension rec {
         name = "markdown-editor";
-        pname = "markdown-editor";
+        pname = name;
         version = "0.1.13";
         src = ./markdown-editor.zip;
         # TODO: download (and build)?
@@ -52,8 +53,17 @@ with pkgs.unstable; {
         #   hash = "sha256-3huvD5URp+/6Ax1DIs4C94ce10u6nTQQpmJ2s6SsNdE=";
         # };
         vscodeExtPublisher = "zaaack";
-        vscodeExtName = "markdown-editor";
-        vscodeExtUniqueId = "zaaack.markdown-editor";
+        vscodeExtName = name;
+        vscodeExtUniqueId = "${vscodeExtPublisher}.${name}";
+      })
+      (vscode-utils.buildVscodeExtension rec {
+        name = "custom-actions";
+        pname = name;
+        version = "0.0.1";
+        src = ./custom-actions.zip;
+        vscodeExtPublisher = "inferno214221";
+        vscodeExtName = name;
+        vscodeExtUniqueId = "${vscodeExtPublisher}.${name}";
       })
     # ]) ++ (vscode-utils.extensionsFromVscodeMarketplace [
     #   {

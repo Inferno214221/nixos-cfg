@@ -68,7 +68,7 @@
       "reset-cmds" = "unalias sudo su cd ls tree cat grep fetch";
 
       "battery" = "echo \"$(cat /sys/class/power_supply/BAT1/capacity)%\"";
-      "loc" = "git ls-files | grep -v -E \"^\\..*\" | grep -E \".*\\.(jsx?|tsx?|html|css?|cc?|java|sh|py|rs)\" | xargs wc -l";
+      "loc" = "git ls-files | grep -v -E \"^\\..*\" | grep -E \".*\\.(jsx?|tsx?|html|css?|cc?|java|s?h|py|rs)\" | xargs wc -l";
       "yt-dlp-mp3" = "yt-dlp -x --audio-format mp3";
       "mp3gain-all" = "find . -type f -name \"*.mp3\" -exec mp3gain -r \{\} +";
       "edit-hist" = "gedit ~/.zsh_history";
@@ -180,6 +180,6 @@
   services.gpg-agent = {
     enable = false;
     # enableSshSupport = true;
-    # pinentry.package = pkgs.pinentry-gnome3;
+    pinentry.package = pkgs.pinentry-gnome3;
   };
 }
