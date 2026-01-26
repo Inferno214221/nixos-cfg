@@ -5,7 +5,7 @@
       gimp-with-plugins
       # gimpPlugins.gap
       gimpPlugins.gmic
-      gimpPlugins.bimp
+      # gimpPlugins.bimp
       gimpPlugins.resynthesizer
     ];
     

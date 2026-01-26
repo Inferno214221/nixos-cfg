@@ -115,8 +115,6 @@
 
     git = {
       enable = true;
-      userName = "Inferno214221";
-      userEmail = "inferno214221@gmail.com";
       lfs.enable = true;
 
       signing = {
@@ -124,7 +122,9 @@
         key = "0xBB5244EBF14A3C91";
       };
       
-      extraConfig = {
+      settings = {
+        user.name = "Inferno214221";
+        user.email = "inferno214221@gmail.com";
         init.defaultBranch = "main";
         color.ui = true;
       };
@@ -132,7 +132,7 @@
 
     ssh = {
       enable = true;
-      addKeysToAgent = "yes";
+      matchBlocks."*".addKeysToAgent = "yes";
       
       extraConfig = ''
         Host github.com

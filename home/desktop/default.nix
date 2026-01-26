@@ -25,10 +25,10 @@ in {
       xcape
       galculator # TODO: stick window above
       corefonts
-      vistafonts
+      vista-fonts
       baobab
       youtube-music
-      jetbrains.idea-community-src # TODO: configure theme, keybinds, extensions, etc...
+      jetbrains.idea-oss # TODO: configure theme, keybinds, extensions, etc...
       jetbrains.datagrip
       android-studio
       libreoffice # TODO: compact theme, papirus icons, keybinds
@@ -37,7 +37,7 @@ in {
       drawing
       kdePackages.kdenlive # TODO: configure & theme
       obs-studio
-      cinny-desktop
+      # cinny-desktop
       element-desktop
       keymapp
       qmk
@@ -174,7 +174,7 @@ in {
 
     font = {
       name = "Ubuntu";
-      package = pkgs.ubuntu_font_family;
+      package = pkgs.ubuntu-classic;
     };
 
     gtk3.extraConfig = {

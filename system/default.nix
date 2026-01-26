@@ -211,7 +211,7 @@ in
     enableDefaultPackages = true;
 
     packages = with pkgs; [
-      ubuntu_font_family
+      ubuntu-classic
       meslo-lgs-nf
     ];
   };
