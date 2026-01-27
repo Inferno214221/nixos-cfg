@@ -212,7 +212,7 @@ in {
     idea-community = {
       name = "IntelliJ IDEA";
       icon = "idea-community";
-      exec = "idea-community";
+      exec = "idea-oss";
       settings.StartupWMClass = "jetbrains-idea-ce";
     };
 

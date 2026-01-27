@@ -45,6 +45,7 @@
       "snix" = "nh os switch path:/home/inferno214221/config";
       "tnix" = "nh os test path:/home/inferno214221/config";
       "hix" = "nh home switch path:/home/inferno214221/config";
+      "kix" = "qmk flash";
       "clix" = "nh clean all --nogcroots";
       "clax" = "nh clean all";
       "nup" = "nix flake update --flake path:/home/inferno214221/config";
@@ -140,7 +141,7 @@
           User git
           IdentityFile ~/.ssh/github_personal
           IdentitiesOnly yes
-      '';
+      '' + ((import ./ssh.nix) {}).extraHosts;
     };
 
     gpg.enable = true;

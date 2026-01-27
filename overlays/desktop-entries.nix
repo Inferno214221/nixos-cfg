@@ -23,10 +23,4 @@ in {
     find = "Name=GNU Image Manipulation Program";
     replace = "Name=GIMP";
   };
-  # gitkraken = replaceInDesktop {
-  #   pkg = prev.gitkraken;
-  #   desktopName = "GitKraken\\ Desktop";
-  #   find = "Name=GitKraken Desktop";
-  #   replace = "Name=GitKraken";
-  # };
 }
