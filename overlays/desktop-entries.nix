@@ -17,8 +17,8 @@ in {
       sed -i -e "s/Name=VSCodium - URL Handler/Name=VSCodium/g" $out/share/applications/codium-url-handler.desktop
     '';
   });
-  gimp-with-plugins = replaceInDesktop {
-    pkg = prev.gimp-with-plugins;
+  old-gimp-with-plugins = replaceInDesktop {
+    pkg = prev.old.gimp-with-plugins;
     desktopName = "gimp";
     find = "Name=GNU Image Manipulation Program";
     replace = "Name=GIMP";

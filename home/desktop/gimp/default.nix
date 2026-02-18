@@ -2,11 +2,11 @@
 {
   home = {
     packages = with pkgs; [
-      gimp-with-plugins
-      # gimpPlugins.gap
-      gimpPlugins.gmic
-      # gimpPlugins.bimp
-      gimpPlugins.resynthesizer
+      old-gimp-with-plugins
+      old.gimpPlugins.gap
+      old.gimpPlugins.gmic
+      old.gimpPlugins.bimp
+      old.gimpPlugins.resynthesizer
     ];
     
     file = {
