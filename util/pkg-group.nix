@@ -25,7 +25,7 @@
         nix profile remove ${pkgGroupPath} > /dev/null 2>&1 ||
         echo "Failed to remove group!"
       else
-        nix profile install ${pkgGroupPath} --priority ${toString priority} > /dev/null 2>&1 ||
+        nix profile add ${pkgGroupPath} --priority ${toString priority} > /dev/null 2>&1 ||
         echo "Failed to add group!"
       fi
     '';

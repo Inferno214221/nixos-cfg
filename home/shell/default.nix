@@ -19,6 +19,7 @@
       nix-tree
       hyperfine
       delta
+      mine.time-tracker
 
       ffmpeg
       imagemagick
@@ -32,6 +33,11 @@
       typst
 
       caligula
+
+      sqlite
+      litecli
+
+      qmk
     ];
 
     sessionVariables = {
@@ -64,6 +70,7 @@
       # "sed" = "sd";
       "delta" = "delta --file-style white --hunk-header-style omit";
       "fetch" = "fastfetch";
+      "tt" = "time-tracker";
       # less
       # nano
       "reset-cmds" = "unalias sudo su cd ls tree cat grep fetch";

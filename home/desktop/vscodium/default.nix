@@ -23,11 +23,12 @@ with pkgs.unstable; {
       jnoortheen.nix-ide
       jeanp413.open-remote-ssh
       gruntfuggly.todo-tree
-      vscode-icons-team.vscode-icons # Temporarily Broken
+      vscode-icons-team.vscode-icons
       # dotjoshjohnson.xml
       redhat.vscode-xml
       mkhl.direnv
       myriad-dreamin.tinymist
+      llvm-vs-code-extensions.vscode-clangd
     ]) ++ (with vscode-marketplace; [
       # redhat.java
       ms-python.python

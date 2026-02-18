@@ -39,8 +39,6 @@ in {
       obs-studio
       # cinny-desktop
       element-desktop
-      keymapp
-      qmk
       mine.timekeeper
       old-gnome.nautilus
       old-gnome.gedit
