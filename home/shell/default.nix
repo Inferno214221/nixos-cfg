@@ -11,7 +11,7 @@
       killall
       units
       file
-
+      unzip
       tldr
       fastfetch
       sd
@@ -19,25 +19,20 @@
       nix-tree
       hyperfine
       delta
-      mine.time-tracker
-
       ffmpeg
       imagemagick
-
       yt-dlp
       mp3gain
-
       pdftk
       pandoc
       texlive.combined.scheme-small
       typst
-
       caligula
-
       sqlite
       litecli
-
       qmk
+      claude-code
+      mine.time-tracker
     ];
 
     sessionVariables = {
@@ -125,10 +120,10 @@
       enable = true;
       lfs.enable = true;
 
-      signing = {
-        signByDefault = true;
-        key = "0xBB5244EBF14A3C91";
-      };
+      # signing = {
+      #   signByDefault = true;
+      #   key = "0xBB5244EBF14A3C91";
+      # };
       
       settings = {
         user.name = "Inferno214221";

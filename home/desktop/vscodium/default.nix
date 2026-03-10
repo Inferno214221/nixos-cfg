@@ -29,11 +29,11 @@ with pkgs.unstable; {
       mkhl.direnv
       myriad-dreamin.tinymist
       llvm-vs-code-extensions.vscode-clangd
+      anthropic.claude-code
     ]) ++ (with vscode-marketplace; [
       # redhat.java
       ms-python.python
       sandcastle.vscode-open
-      # redhat.vscode-xml
     # ]) ++ (with vscode-marketplace-release; [
     #   github.copilot
     #   github.copilot-chat

@@ -7,6 +7,12 @@ in
     ./hosts/laptop
   ];
 
+  qt = {
+    enable = true;
+    style = "gtk2";
+    platformTheme = "qt5ct";
+  };
+
   networking = {
     hostName = "nixos";
     networkmanager.enable = true;
@@ -246,6 +252,7 @@ in
 
     virtualbox.host = {
       enable = true;
+      enableExtensionPack = true;
     };
   };
 
