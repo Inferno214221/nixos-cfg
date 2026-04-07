@@ -172,7 +172,7 @@ in
       isNormalUser = true;
       description = "Inferno214221";
       extraGroups = [ "networkmanager" "wheel" "docker" "plugdev" "adbusers" "postgres" "vboxusers" "dialout" ];
-      packages = with pkgs; [];
+      # packages = with pkgs; [];
     };
   };
 
@@ -229,6 +229,8 @@ in
     packages = with pkgs; [
       ubuntu-classic
       meslo-lgs-nf
+      nerd-fonts.droid-sans-mono
+      (import ../pkgs/droid-sans { inherit pkgs; })
     ];
   };
 
