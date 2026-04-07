@@ -6,6 +6,8 @@
 
   home = {
     packages = with pkgs; [
+      nil
+      nixd
       curl
       tree
       killall
@@ -33,6 +35,7 @@
       qmk
       claude-code
       mine.time-tracker
+      xev
     ];
 
     sessionVariables = {
@@ -124,7 +127,7 @@
       #   signByDefault = true;
       #   key = "0xBB5244EBF14A3C91";
       # };
-      
+
       settings = {
         user.name = "Inferno214221";
         user.email = "inferno214221@gmail.com";
@@ -136,7 +139,7 @@
     ssh = {
       enable = true;
       matchBlocks."*".addKeysToAgent = "yes";
-      
+
       extraConfig = ''
         Host github.com
           HostName github.com
