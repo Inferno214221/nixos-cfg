@@ -8,6 +8,7 @@ in {
     ./screenshots
     ./vscodium
     ./xfce
+    ./zed
   ];
 
   home = {
@@ -114,7 +115,7 @@ in {
     };
 
     # sessionVariables = {};
-    
+
     activation = {
       # This reverts the font size change that occurs on activation.
       fixFontSize = lib.hm.dag.entryAfter ["writeBoundary"] ''
@@ -179,6 +180,20 @@ in {
       gtk-shell-shows-desktop = 0;
       gtk-error-bell = false;
     };
+  };
+
+  xdg.portal = {
+    enable = true;
+
+    config.common = {
+      default = [
+        "gtk"
+      ];
+    };
+
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+    ];
   };
 
   xdg.desktopEntries = {
