@@ -183,6 +183,21 @@ in {
     };
   };
 
+  qt = {
+    enable = true;
+    platformTheme = {
+      name = "qtct";
+      package = with pkgs; [
+        libsForQt5.qt5ct
+        libsForQt5.qtstyleplugins
+      ];
+    };
+    style = {
+      name = "qt5ct-style";
+      package = pkgs.libsForQt5.qt5ct;
+    };
+  };
+
   xdg.portal = {
     enable = true;
 
