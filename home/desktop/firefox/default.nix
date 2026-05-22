@@ -18,11 +18,11 @@
       target = ".mozilla/firefox/g9bnymtb.default/chrome/firefox-papirus-icon-theme";
     };
 
-    firefox-new-tab = {
-      enable = true;
-      source = ./firefox-new-tab;
-      target = ".mozilla/firefox/g9bnymtb.default/firefox-new-tab";
-    };
+    # firefox-new-tab = {
+    #   enable = true;
+    #   source = ./firefox-new-tab;
+    #   target = ".mozilla/firefox/g9bnymtb.default/firefox-new-tab";
+    # };
 
     # simple-tab-groups-tweak = {
     #   enable = true;
