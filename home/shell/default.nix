@@ -170,7 +170,6 @@
     fd.enable = true;
     ripgrep.enable = true;
     # fzf.enable = true;
-    nix-index.enable = true;
     # nix-index-database.comma.enable = true;
     nix-your-shell.enable = true;
   };

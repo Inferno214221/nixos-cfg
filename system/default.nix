@@ -230,7 +230,6 @@ in
       ubuntu-classic
       meslo-lgs-nf
       nerd-fonts.droid-sans-mono
-      (import ../pkgs/droid-sans { inherit pkgs; })
     ];
   };
 
