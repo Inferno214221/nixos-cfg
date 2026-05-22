@@ -53,25 +53,20 @@
       "clix" = "nh clean all --nogcroots";
       "clax" = "nh clean all";
       "nup" = "nix flake update --flake path:/home/inferno214221/config";
-      "nsh" = "nix-shell -p"; # --command zsh
+      "nsh" = "nix-shell -p";
 
       # I use aliases here so that I don't break my workflow if I switch environment.
       "sudo" = "doas";
       "su" = "su -c zsh";
       "cd" = "z";
       "ls" = "eza -l --no-user --no-time --sort=type --hyperlink";
-      "ls-full" = "eza -l --time-style=relative --smart-group";
+      "lsf" = "eza -l --time-style=relative --smart-group";
       "tree" = "eza -l --no-user --no-time --sort=type --total-size --git-ignore -T -L";
-      "cat" = "bat";
-      # "find" = "fd";
-      # "grep" = "rg";
-      # "sed" = "sd";
-      "delta" = "delta --file-style white --hunk-header-style omit";
+
+      "unalias-def" = "unalias sudo su cd ls tree";
+
       "fetch" = "fastfetch";
       "tt" = "time-tracker";
-      # less
-      # nano
-      "reset-cmds" = "unalias sudo su cd ls tree cat grep fetch";
 
       "battery" = "echo \"$(cat /sys/class/power_supply/BAT1/capacity)%\"";
       "loc" = "git ls-files | grep -v -E \"^\\..*\" | grep -E \".*\\.(jsx?|tsx?|html|css?|cc?|java|s?h|py|rs)\" | xargs wc -l";
@@ -138,7 +133,21 @@
 
     ssh = {
       enable = true;
-      matchBlocks."*".addKeysToAgent = "yes";
+
+      enableDefaultConfig = false;
+
+      matchBlocks."*" = {
+        forwardAgent = false;
+        addKeysToAgent = "yes";
+        compression = false;
+        serverAliveInterval = 0;
+        serverAliveCountMax = 3;
+        hashKnownHosts = false;
+        userKnownHostsFile = "~/.ssh/known_hosts";
+        controlMaster = "no";
+        controlPath = "~/.ssh/master-%r@%n:%p";
+        controlPersist = "no";
+      };
 
       extraConfig = ''
         Host github.com
@@ -166,7 +175,6 @@
       enableZshIntegration = false;
     };
 
-    bat.enable = true;
     fd.enable = true;
     ripgrep.enable = true;
     # fzf.enable = true;
