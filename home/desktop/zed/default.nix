@@ -16,8 +16,16 @@
       "material-icon-theme"
     ];
 
+    mutableUserKeymaps = false;
     userKeymaps = (import ./keymap.nix {});
 
+    mutableUserSettings = false;
+    userSettings = (import ./settings.nix {});
+
     themes = (import ./themes.nix {});
+
+    extraPackages = with pkgs; [
+      rust-analyzer-nightly
+    ];
   };
 }
