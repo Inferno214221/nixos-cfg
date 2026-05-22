@@ -1,4 +1,9 @@
 {
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "buffer_font_weight": 450.0,
+  "show_whitespaces": "selection",
   "diagnostics": {
     "inline": {
       "enabled": false
@@ -28,6 +33,7 @@
     "entry_spacing": "standard"
   },
   "git_panel": {
+    "dock": "left",
     "default_width": 270.0,
     "tree_view": true
   },
@@ -43,8 +49,10 @@
     "dock": "right"
   },
   "agent": {
+    "sidebar_side": "right",
+    "dock": "right",
     "show_turn_stats": true,
-    "play_sound_when_agent_done": true,
+    "play_sound_when_agent_done": "always",
     "default_model": {
       "provider": "anthropic",
       "model": "claude-sonnet-4-6-latest",
@@ -77,7 +85,7 @@
   },
   "colorize_brackets": true,
   "auto_update": false,
-  "buffer_font_family": "DroidSansM Nerd Font Mono",
+  "buffer_font_family": "DejaVu Sans Mono",
   "use_system_window_tabs": false,
   "window_decorations": "client",
   "telemetry": {
@@ -305,6 +313,13 @@
           "background": {
             "enabled": true
           }
+        }
+      }
+    },
+    "rust-analyzer": {
+      "initialization_options": {
+        "check": {
+          "command": "clippy"
         }
       }
     }

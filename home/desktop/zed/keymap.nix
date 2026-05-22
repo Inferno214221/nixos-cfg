@@ -52,6 +52,7 @@
       alt-right = "workspace::ActivatePaneRight";
       alt-left = "workspace::ActivatePaneLeft";
       "ctrl-," = "zed::OpenSettings";
+      "ctrl-shift-," = "zed::OpenSettingsFile";
       ctrl-shift-n = "workspace::NewWindow";
       ctrl-shift-o = ["projects::OpenRecent" { create_new_window = false; }];
       ctrl-space = "file_finder::Toggle";
@@ -90,12 +91,13 @@
       ctrl-right = "editor::MoveToNextWordEnd";
       home = ["editor::MoveToBeginningOfLine" { stop_at_soft_wraps = true; stop_at_indent = true; }];
       end = ["editor::MoveToEndOfLine" { stop_at_soft_wraps = true; }];
-      ctrl-home = "editor::MoveToBeginning";
-      ctrl-end = "editor::MoveToEnd";
-      ctrl-up = "editor::ExpandExcerptsUp";
-      ctrl-down = "editor::ExpandExcerptsDown";
+      ctrl-home = "editor::MoveToStartOfExcerpt";
+      ctrl-end = "editor::MoveToEndOfExcerpt";
       pageup = "editor::MovePageUp";
       pagedown = "editor::MovePageDown";
+      ctrl-up = "editor::ExpandExcerptsUp";
+      ctrl-down = "editor::ExpandExcerptsDown";
+      ctrl-alt-enter = "editor::OpenExcerpts";
 
       # Selection — shift extends
       shift-up = "editor::SelectUp";
@@ -119,6 +121,8 @@
       delete = "editor::Delete";
       ctrl-backspace = ["editor::DeleteToPreviousWordStart" { ignore_newlines = false; ignore_brackets = false; }];
       ctrl-delete = ["editor::DeleteToNextWordEnd" { ignore_newlines = false; ignore_brackets = false; }];
+      alt-backspace = "editor::DeleteToPreviousSubwordStart";
+      alt-delete = "editor::DeleteToNextSubwordEnd";
 
       # Clipboard and history
       ctrl-x = "editor::Cut";
@@ -161,6 +165,7 @@
       ctrl-shift-delete = "editor::DeleteToEndOfLine";
       ctrl-shift-backspace = ["editor::DeleteToBeginningOfLine" { stop_at_indent = true; }];
       alt-q = "editor::Rewrap";
+      alt-w = "editor::ToggleSoftWrap";
       alt-shift-up = "editor::SelectLargerSyntaxNode";
       alt-shift-down = "editor::SelectSmallerSyntaxNode";
       ctrl-shift-i = "editor::SortLinesCaseSensitive";
@@ -172,8 +177,7 @@
       f2 = "editor::Rename";
       ctrl-d = "editor::GoToTypeDefinition";
       ctrl-shift-d = "editor::GoToImplementation";
-      # alt-f used; ctrl-r taken by right dock toggle
-      alt-f = "editor::FindAllReferences";
+      ctrl-r = "editor::FindAllReferences";
       "ctrl-." = "editor::ToggleCodeActions";
       ctrl-i = "editor::OrganizeImports";
       ctrl-shift-r = "editor::RestartLanguageServer";
@@ -355,7 +359,6 @@
     bindings = {
       ctrl-enter = "search::ReplaceNext";
       ctrl-shift-enter = "search::ReplaceAll";
-      # TODO: editor::OpenExcerpts
     };
   }
 
@@ -536,7 +539,7 @@
     context = "AgentPanel";
     bindings = {
       ctrl-n = "agent::NewExternalAgentThread";
-      ctrl-h = "agent::OpenHistory";
+      # ctrl-h = "agent::OpenHistory";
       "ctrl-/" = "agent::AllowOnce";
       "ctrl-\\" = "agent::AllowAlways";
       "ctrl-?" = "agent::AllowAlways";
