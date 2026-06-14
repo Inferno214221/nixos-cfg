@@ -3,8 +3,8 @@ pkgs.stdenv.mkDerivation {
   name = "kali-dark";
 
   src = pkgs.fetchurl {
-    url = "https://gitlab.com/kalilinux/packages/kali-themes/-/archive/kali/2024.2.1/kali-themes-kali-2024.2.1.tar.gz";
-    hash = "sha256-GKXqjIEjeP/+q0yGL9NFOAYELLvvFbZubxI7gn1ea2M=";
+    url = "https://gitlab.com/kalilinux/packages/kali-themes/-/archive/kali/2024.2.1/kali-themes-kali-2026.2.0.tar.gz";
+    hash = "sha256-J3C6+ptvw64k9FdcdluUXoalimvRoWF6h6VZ44FCXRU=";
   };
 
   basepath = "./share/themes/Kali-Dark/gtk-3.0/assets/kali-headerbar-logo";

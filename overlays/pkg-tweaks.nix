@@ -7,4 +7,13 @@ final: prev: {
       hash = "sha256-j14OZrI1lAuTP/Zl+6GugEjQPBycRxoyVXOCWfGYAKw=";
     };
   });
+
+  # papirus-icon-theme = prev.papirus-icon-theme.overrideAttrs (oldAttrs: {
+  #   postInstall = ''
+  #     for theme in $out/share/icons/*; do
+  #       ln -s $theme/22x22/categories $theme/18x18/categories
+  #       gtk-update-icon-cache --force $theme
+  #     done
+  #   '';
+  # });
 }

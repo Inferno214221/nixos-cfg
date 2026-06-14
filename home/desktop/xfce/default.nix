@@ -31,7 +31,7 @@
       target = ".config/xfce4/panel/docklike-9.rc";
       force = true;
     };
-    
+
     logout-menu = {
       enable = true;
       source = ./logout.menu;
@@ -87,6 +87,10 @@
     xfce4-desktop = {
       "backdrop/screen0/monitoreDP-1/workspace0/last-image" = "${../pictures/bg0.png}";
       "backdrop/screen0/monitorHDMI-1-0/workspace0/last-image" = "${../pictures/bg1.png}";
+    };
+
+    xfwm4 = {
+      "general/easy_click" = "Super";
     };
   };
 }
