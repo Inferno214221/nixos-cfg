@@ -44,13 +44,16 @@
     metrics = false;
     diagnostics = false;
   };
-  restore_on_startup = "last_session";
+  restore_on_startup = "launchpad";
   show_whitespaces = "selection";
   diagnostics.inline.enabled = false;
   show_edit_predictions = false;
-  multi_cursor_modifier = "cmd_or_ctrl";
+  multi_cursor_modifier = "alt";
   session.trust_all_worktrees = true;
   toolbar.code_actions = true;
+  hide_mouse = "never";
+  show_nav_history_buttons = false;
+  tabs.show_diagnostics = "all";
 
   # Panels
   project_panel = {
@@ -113,11 +116,19 @@
   remove_trailing_whitespace_on_save = false;
   semantic_tokens = "combined";
   format_on_save = "off";
+  global_lsp_settings.semantic_token_rules = [
+    {
+      token_type = "variable";
+      token_modifiers = ["mutable"];
+      style = ["variable.mutable" "variable"];
+    }
+  ];
 
   # Language Overrides
   languages = let
     config = (lang: lang // {
       tab_size = 2;
+      soft_wrap = "bounded";
     });
     markup = (lang: lang // {
       tab_size = 2;
@@ -142,7 +153,10 @@
   };
   lsp = {
     tinymist = {
-      initialization_options.preview.background.enabled = true;
+      initialization_options.preview.background = {
+        # args = ["--data-plane-host=127.0.0.1:23635" "--invert-colors=never"];
+        enabled = true;
+      };
     };
     rust-analyzer = {
       initialization_options.check.command = "clippy";

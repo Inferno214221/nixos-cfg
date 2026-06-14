@@ -53,6 +53,7 @@
       alt-left = "workspace::ActivatePaneLeft";
       "ctrl-," = "zed::OpenSettings";
       "ctrl-shift-," = "zed::OpenSettingsFile";
+      "ctrl-$" = "zed::OpenSettingsFile";
       ctrl-shift-n = "workspace::NewWindow";
       ctrl-shift-o = ["projects::OpenRecent" { create_new_window = false; }];
       ctrl-space = "file_finder::Toggle";

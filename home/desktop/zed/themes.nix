@@ -240,7 +240,7 @@
               font_style = null;
               font_weight = null;
             };
-            emphasis.strong = {
+            "emphasis.strong" = {
               color = "#bf956aff";
               font_style = null;
               font_weight = 700;
@@ -325,27 +325,27 @@
               font_style = null;
               font_weight = null;
             };
-            punctuation.bracket = {
+            "punctuation.bracket" = {
               color = "#28E4EBFF";
               font_style = null;
               font_weight = null;
             };
-            punctuation.delimiter = {
+            "punctuation.delimiter" = {
               color = "#7A82DAFF";
               font_style = null;
               font_weight = null;
             };
-            punctuation.list_marker = {
+            "punctuation.list_marker" = {
               color = "#d07277ff";
               font_style = null;
               font_weight = null;
             };
-            punctuation.markup = {
+            "punctuation.markup" = {
               color = "#d07277ff";
               font_style = null;
               font_weight = null;
             };
-            punctuation.special = {
+            "punctuation.special" = {
               color = "#7A82DAFF";
               font_style = null;
               font_weight = null;
@@ -355,7 +355,7 @@
               font_style = null;
               font_weight = null;
             };
-            selector.pseudo = {
+            "selector.pseudo" = {
               color = "#74ade8ff";
               font_style = null;
               font_weight = null;
@@ -365,22 +365,22 @@
               font_style = null;
               font_weight = null;
             };
-            string.escape = {
+            "string.escape" = {
               color = "#FF936AFF";
               font_style = null;
               font_weight = null;
             };
-            string.regex = {
+            "string.regex" = {
               color = "#bf956aff";
               font_style = null;
               font_weight = null;
             };
-            string.special = {
+            "string.special" = {
               color = "#bf956aff";
               font_style = null;
               font_weight = null;
             };
-            string.special.symbol = {
+            "string.special.symbol" = {
               color = "#bf956aff";
               font_style = null;
               font_weight = null;
@@ -390,7 +390,7 @@
               font_style = null;
               font_weight = null;
             };
-            text.literal = {
+            "text.literal" = {
               color = "#F9C859FF";
               font_style = null;
               font_weight = null;
@@ -410,7 +410,12 @@
               font_style = null;
               font_weight = null;
             };
-            variable.special = {
+            "variable.mutable" = {
+              color = null; # TODO
+              font_style = null;
+              font_weight = null;
+            };
+            "variable.special" = {
               color = "#10B1FEFF";
               font_style = null;
               font_weight = null;
