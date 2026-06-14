@@ -44,6 +44,7 @@ in {
       old-gnome.nautilus
       old-gnome.gedit
       rust-analyzer-nightly
+      handbrake
     ]) ++ (with pkgs.old.gnome; [ # Old Gnome Packages
       evince
       file-roller

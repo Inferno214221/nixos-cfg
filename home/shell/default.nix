@@ -36,6 +36,10 @@
       claude-code
       mine.time-tracker
       xev
+      httpie
+      brasero
+      zip
+      whipper
     ];
 
     sessionVariables = {
