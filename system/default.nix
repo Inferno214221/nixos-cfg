@@ -161,8 +161,6 @@ in
       enable = true;
       nix-direnv.enable = true;
     };
-
-    adb.enable = true;
   };
 
   users = {
@@ -185,7 +183,7 @@ in
 
   environment = {
     # TODO: theme login screen by install kali-dark
-    xfce.excludePackages = with pkgs.xfce; [
+    xfce.excludePackages = with pkgs; [
       mousepad
       parole
       ristretto
@@ -206,7 +204,7 @@ in
       distrobox
       exfat
       exfatprogs
-    ]) ++ (with pkgs.xfce; [
+      android-tools
       xfce4-mpc-plugin
       xfce4-systemload-plugin
       xfce4-genmon-plugin

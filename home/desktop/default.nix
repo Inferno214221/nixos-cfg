@@ -19,16 +19,16 @@ in {
       discord
       # sayonara
       # thunderbird
-      vlc # TODO: qt5ct
+      vlc
       xmousepasteblock
-      xorg.xmodmap
-      xorg.xkill
+      xmodmap
+      xkill
       xcape
       galculator # TODO: stick window above
       corefonts
       vista-fonts
       baobab
-      youtube-music
+      pear-desktop
       jetbrains.idea-oss # TODO: configure theme, keybinds, extensions, etc...
       jetbrains.datagrip
       android-studio
@@ -121,7 +121,7 @@ in {
     activation = {
       # This reverts the font size change that occurs on activation.
       fixFontSize = lib.hm.dag.entryAfter ["writeBoundary"] ''
-        run ${pkgs.xfce.xfconf}/bin/xfconf-query -c xsettings -p /Gtk/FontName -t string -s "Ubuntu 11"
+        run ${pkgs.xfconf}/bin/xfconf-query -c xsettings -p /Gtk/FontName -t string -s "Ubuntu 11"
       '';
     };
   };
@@ -155,13 +155,14 @@ in {
     };
   };
 
-  gtk = {
+  gtk = rec {
     enable = true;
 
     theme = {
       name = "Kali-Dark";
       package = import ../../pkgs/kali-dark { inherit pkgs; };
     };
+    gtk4.theme = theme;
 
     iconTheme = {
       name = "Papirus-Dark";

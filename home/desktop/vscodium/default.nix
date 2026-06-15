@@ -1,8 +1,8 @@
 { inputs, lib, config, pkgs, ... }:
 with pkgs.unstable; {
-  programs.vscode = {
+  programs.vscodium = {
     enable = true;
-    package = vscodium;
+    # package = vscodium;
     # userSettings = {};
     # keybindings = [];
     mutableExtensionsDir = false;
@@ -45,14 +45,9 @@ with pkgs.unstable; {
         name = "markdown-editor";
         pname = name;
         version = "0.1.13";
-        src = ./markdown-editor.zip;
-        # TODO: download (and build)?
-        # src = fetchFromGitHub {
-        #   owner = "inferno214221";
-        #   repo = "vscode-markdown-editor";
-        #   rev = "20e7109dd5ae07e615a3747bc886572342616bb3";
-        #   hash = "sha256-3huvD5URp+/6Ax1DIs4C94ce10u6nTQQpmJ2s6SsNdE=";
-        # };
+        # TODO: it would be great to get this built as a package, but the tool it uses I haven't
+        # seen applied for anything else. It was written by the same guy who wrote the extension.
+        src = ./markdown-editor.vsix;
         vscodeExtPublisher = "zaaack";
         vscodeExtName = name;
         vscodeExtUniqueId = "${vscodeExtPublisher}.${name}";
@@ -61,7 +56,7 @@ with pkgs.unstable; {
         name = "custom-actions";
         pname = name;
         version = "0.0.1";
-        src = ./custom-actions.zip;
+        src = ./custom-actions.vsix;
         vscodeExtPublisher = "inferno214221";
         vscodeExtName = name;
         vscodeExtUniqueId = "${vscodeExtPublisher}.${name}";

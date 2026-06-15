@@ -1,4 +1,4 @@
-{ inputs, lib, config, pkgs, ... }: let 
+{ inputs, lib, config, pkgs, ... }: let
   patchedP10k = "${pkgs.stdenv.mkDerivation {
     name = "p10k-cfg-tty";
     version = "0.0.1";
@@ -16,6 +16,8 @@ in {
     oh-my-zsh.enable = true;
     syntaxHighlighting.enable = true;
     # autosuggestion.enable = true;
+
+    dotDir = "${config.xdg.configHome}/zsh";
 
     plugins = [ {
       name = "powerlevel10k";

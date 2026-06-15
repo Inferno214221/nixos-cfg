@@ -4,7 +4,7 @@
     kali-dark = {
       enable = true;
       source = ./kali-dark.css;
-      target = ".mozilla/firefox/g9bnymtb.default/chrome/kali-dark.css";
+      target = "${config.programs.firefox.configPath}/g9bnymtb.default/chrome/kali-dark.css";
     };
 
     papirus = {
@@ -15,25 +15,26 @@
         rev = "480ce683e4c71afb4454c607a8e238a0248c1653";
         hash = "sha256-org0OEbZyiR0mu4kjF8FrPoibyxHVtkW94ykMtF+aeU=";
       };
-      target = ".mozilla/firefox/g9bnymtb.default/chrome/firefox-papirus-icon-theme";
+      target = "${config.programs.firefox.configPath}/g9bnymtb.default/chrome/firefox-papirus-icon-theme";
     };
 
     # firefox-new-tab = {
     #   enable = true;
     #   source = ./firefox-new-tab;
-    #   target = ".mozilla/firefox/g9bnymtb.default/firefox-new-tab";
+    #   target = "${config.programs.firefox.configPath}/g9bnymtb.default/firefox-new-tab";
     # };
 
     # simple-tab-groups-tweak = {
     #   enable = true;
     #   source = "${pkgs.mine.simple-tab-groups}/simple-tab-groups@drive4ik.xpi";
-    #   target = ".mozilla/firefox/g9bnymtb.default/extensions/simple-tab-groups@drive4ik.xpi";
+    #   target = "${config.programs.firefox.configPath}/g9bnymtb.default/extensions/simple-tab-groups@drive4ik.xpi";
     #   force = true;
     # };
   };
 
   programs.firefox = {
     enable = true;
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
     package = pkgs.wrapFirefox pkgs.firefox-esr-unwrapped {
       extraPolicies = {
         CaptivePortal = false;
@@ -54,7 +55,7 @@
         var {classes:Cc,interfaces:Ci,utils:Cu} = Components;
         try {
           Cu.import("resource:///modules/AboutNewTab.jsm");
-          var newTabURL = "file:///home/inferno214221/.mozilla/firefox/g9bnymtb.default/firefox-new-tab/index.html";
+          var newTabURL = "file://${config.programs.firefox.configPath}/g9bnymtb.default/firefox-new-tab/index.html";
           AboutNewTab.newTabURL = newTabURL;
         } catch(e) {
           Cu.reportError(e);
