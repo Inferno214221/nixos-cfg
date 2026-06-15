@@ -102,7 +102,7 @@
           "version_control.modified" = "#199FFDFF";
           "version_control.word_added" = "#2EA04859";
           "version_control.word_deleted" = "#78081BCC";
-          "version_control.deleted" = "#B55151FF";
+          "version_control.deleted" = "#734C41FF";
           "version_control.conflict_marker.ours" = "#a1c1811a";
           "version_control.conflict_marker.theirs" = "#74ade81a";
           "conflict" = "#dec184ff";

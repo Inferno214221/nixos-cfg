@@ -539,7 +539,7 @@
   {
     context = "AgentPanel";
     bindings = {
-      ctrl-n = "agent::NewExternalAgentThread";
+      ctrl-n = ["agent::NewExternalAgentThread" { agent = "claude_code"; }];
       # ctrl-h = "agent::OpenHistory";
       "ctrl-/" = "agent::AllowOnce";
       "ctrl-\\" = "agent::AllowAlways";
